@@ -73,14 +73,20 @@ Narrow Python Builds
 --------------------
 
 If you have a narrow Python 2 build and run the following code, a ValueError is
-raised: ::
+raised:
+
+.. code:: python
+
     >>> unichr(0x20000)
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     ValueError: unichr() arg not in range(0x10000) (narrow Python build)
 
 Narrow Python 3.1/3.2 builds have problems compiling RE pattern objects using
-characters ranges greater than 0xFFFF: ::
+characters ranges greater than 0xFFFF:
+
+.. code:: python
+
     >>> re.compile('[\U00020000-\U00020005]')
     Traceback (most recent call last):
     ...
@@ -104,9 +110,11 @@ Zhon supports Python 2.6, 2.7, 3.1, 3.2, and 3.3.
 Install
 -------
 
-Just use pip: ::
+Just use pip:
 
-    pip install zhon
+.. code:: bash
+
+    $ pip install zhon
 
 
 Bugs/Feature Requests
