@@ -120,8 +120,7 @@ Just use pip:
 Bugs/Feature Requests
 ---------------------
 
-Zhon uses its `GitHub Issues page
-<https://github.com/tsroten/zhon/issues`_ to track bugs, feature
+Zhon uses its `GitHub Issues page <https://github.com/tsroten/zhon/issues>`_ to track bugs, feature
 requests, and support questions.
 
 License
