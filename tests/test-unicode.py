@@ -39,7 +39,16 @@ class TestHanIdeographs(unittest.TestCase):
 
 
 class TestRadicals(unittest.TestCase):
-    pass
+
+    def test_only_radicals(self):
+        r_re = re.compile('[^%s]' % unicode.RADICALS)
+        t = '\u2F00\u2F31\u2FBA\u2E98\u2EF3\u2ECF'
+        self.assertEqual(r_re.search(t), None)
+
+    def test_chinese_equivalents(self):
+        r_re = re.compile('[^%s]' % unicode.RADICALS)
+        t = '\u4E00\u5E7F\u516B\u5165'
+        self.assertNotEqual(r_re.search(t), None)
 
 
 class TestFullwidthAlphanumeric(unittest.TestCase):
@@ -56,4 +65,47 @@ class TestFullwidthAlphanumeric(unittest.TestCase):
 
 
 class TestPunctuation(unittest.TestCase):
-    pass
+
+    def test_split_on_punctuation(self):
+        p_re = re.compile('[%s]' % unicode.PUNCTUATION)
+        t = '你好你好好好哈哈，米饭很好吃；哈哈！'
+        self.assertEqual(len(p_re.split(t)), 4)
+
+
+class TestAscii(unittest.TestCase):
+
+    def test_only_ascii(self):
+        a_re = re.compile('[^%s]' % unicode.ASCII)
+        t = 'Hello, my name is Zhon.'
+        self.assertEqual(a_re.search(t), None)
+
+    def test_ascii_and_chinese(self):
+        a_re = re.compile('[^%s]' % unicode.ASCII)
+        t = 'Chinese is fun. 中文很有意思。'
+        self.assertNotEqual(a_re.search(t), None)
+
+
+class TestPinyin(unittest.TestCase):
+
+    def test_pinyin_numbered(self):
+        p_re = re.compile('[^%s]' % unicode.PINYIN)
+        t = 'ni3hao3'
+        self.assertEqual(p_re.search(t), None)
+
+    def test_pinyin_accented(self):
+        p_re = re.compile('[^%s]' % unicode.PINYIN)
+        t = 'nǐhǎo'
+        self.assertEqual(p_re.search(t), None)
+
+
+class TestZhuyin(unittest.TestCase):
+
+    def test_only_zhuyin(self):
+        z_re = re.compile('[^%s]' % unicode.ZHUYIN)
+        t = 'ㄆㄧㄥˊ	ㄗ˙'
+        self.assertEqual(z_re.search(t), None)
+
+    def test_pinyin(self):
+        z_re = re.compile('[^%s]' % unicode.ZHUYIN)
+        t = 'nǐhǎo'
+        self.assertNotEqual(z_re.search(t), None)
