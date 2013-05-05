@@ -65,4 +65,8 @@ class TestFullwidthAlphanumeric(unittest.TestCase):
 
 
 class TestPunctuation(unittest.TestCase):
-    pass
+
+    def test_split_on_punctuation(self):
+        p_re = re.compile('[%s]' % unicode.PUNCTUATION)
+        t = '你好你好好好哈哈，米饭很好吃；哈哈！'
+        self.assertEqual(len(p_re.split(t)), 4)
