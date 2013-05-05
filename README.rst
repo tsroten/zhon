@@ -92,7 +92,7 @@ characters ranges greater than 0xFFFF:
     ...
     sre_constants.error: bad character range
 
-Narrow Python builds incorrectly handle the character '\U00020000' and others
+Narrow Python builds incorrectly handle the character `\U00020000` and others
 like it. Zhon takes this into account when building its constants so that you
 don't have to worry about it -- characters greater than your Python build's
 sys.maxunicode value are not included in Zhon's constants.
