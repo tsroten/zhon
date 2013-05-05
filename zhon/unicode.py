@@ -82,6 +82,18 @@ PINYIN = ('\u003A'  # ascii colon - for the vowel u:
           '\u0031-\u0035'  # ascii numbers 1-5
           '\u0041-\u005A'  # ascii uppercase A-Z
           '\u0061-\u007A'  # ascii lowercase a-z
+          '\u00C0-\u00C1'  # upper 4/2 tone A
+          '\u00C8-\u00C9'  # upper 4/2 tone E
+          '\u00CC-\u00CD'  # upper 4/2 tone I
+          '\u00D2-\u00D3'  # upper 4/2 tone O
+          '\u00D9-\u00DA'  # upper 4/2 tone U
+          '\u00DC'  # upper U:
+          '\u00E0-\u00E1'  # lower 4/2 tone a
+          '\u00E8-\u00E9'  # lower 4/2 tone e
+          '\u00EC-\u00ED'  # lower 4/2 tone i
+          '\u00F2-\u00F3'  # lower 4/2 tone o
+          '\u00F9-\u00FA'  # lower 4/2 tone u
+          '\u00FC'  # lower u:
           '\u0100-\u0103'  # lower and upper 1/3 tone A
           '\u0112-\u0115'  # lower and upper 1/3 tone E
           '\u011A-\u011B'  # lower and upper 3 tone E
@@ -90,7 +102,6 @@ PINYIN = ('\u003A'  # ascii colon - for the vowel u:
           '\u016A-\u016D'  # lower and upper 1/3 tone U
           '\u01CD-\u01DC'  # lower/upper A, I, O, U, U:
           ) + string.whitespace
-
 
 ZHUYIN = ('\u3105-\u312D'  # Bopomofo
           '\u31A0-\u31BA'  # Bopomofo Extended
