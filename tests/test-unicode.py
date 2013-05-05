@@ -83,3 +83,16 @@ class TestAscii(unittest.TestCase):
         a_re = re.compile('[^%s]' % unicode.ASCII)
         t = 'Chinese is fun. 中文很有意思。'
         self.assertNotEqual(a_re.search(t), None)
+
+
+class TestPinyin(unittest.TestCase):
+
+    def test_pinyin_numbered(self):
+        p_re = re.compile('[^%s]' % unicode.PINYIN)
+        t = 'ni3hao3'
+        self.assertEqual(p_re.search(t), None)
+
+    def test_pinyin_accented(self):
+        p_re = re.compile('[^%s]' % unicode.PINYIN)
+        t = 'nǐhǎo'
+        self.assertEqual(p_re.search(t), None)
