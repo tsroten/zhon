@@ -70,3 +70,16 @@ class TestPunctuation(unittest.TestCase):
         p_re = re.compile('[%s]' % unicode.PUNCTUATION)
         t = '你好你好好好哈哈，米饭很好吃；哈哈！'
         self.assertEqual(len(p_re.split(t)), 4)
+
+
+class TestAscii(unittest.TestCase):
+
+    def test_only_ascii(self):
+        a_re = re.compile('[^%s]' % unicode.ASCII)
+        t = 'Hello, my name is Zhon.'
+        self.assertEqual(a_re.search(t), None)
+
+    def test_ascii_and_chinese(self):
+        a_re = re.compile('[^%s]' % unicode.ASCII)
+        t = 'Chinese is fun. 中文很有意思。'
+        self.assertNotEqual(a_re.search(t), None)
