@@ -96,3 +96,16 @@ class TestPinyin(unittest.TestCase):
         p_re = re.compile('[^%s]' % unicode.PINYIN)
         t = 'nǐhǎo'
         self.assertEqual(p_re.search(t), None)
+
+
+class TestZhuyin(unittest.TestCase):
+
+    def test_only_zhuyin(self):
+        z_re = re.compile('[^%s]' % unicode.ZHUYIN)
+        t = 'ㄆㄧㄥˊ	ㄗ˙'
+        self.assertEqual(z_re.search(t), None)
+
+    def test_pinyin(self):
+        z_re = re.compile('[^%s]' % unicode.ZHUYIN)
+        t = 'nǐhǎo'
+        self.assertNotEqual(z_re.search(t), None)
