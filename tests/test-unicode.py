@@ -39,7 +39,16 @@ class TestHanIdeographs(unittest.TestCase):
 
 
 class TestRadicals(unittest.TestCase):
-    pass
+
+    def test_only_radicals(self):
+        r_re = re.compile('[^%s]' % unicode.RADICALS)
+        t = '\u2F00\u2F31\u2FBA\u2E98\u2EF3\u2ECF'
+        self.assertEqual(r_re.search(t), None)
+
+    def test_chinese_equivalents(self):
+        r_re = re.compile('[^%s]' % unicode.RADICALS)
+        t = '\u4E00\u5E7F\u516B\u5165'
+        self.assertNotEqual(r_re.search(t), None)
 
 
 class TestFullwidthAlphanumeric(unittest.TestCase):
