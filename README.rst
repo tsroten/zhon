@@ -13,7 +13,7 @@ processing:
 * Chinese radicals (as used in dictionaries)
 
 Zhon's constants are formatted as strings containing Unicode code ranges. This is
-useful for compiling RE pattern objects. They can be combined to
+useful for compiling `RE pattern objects <http://docs.python.org/3/library/re.html#regular-expression-objects>`_. They can be combined to
 make RE pattern objects as needed.
 
 .. code:: python
