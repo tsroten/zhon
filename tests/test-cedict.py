@@ -2,9 +2,11 @@
 """Tests for the cedict module."""
 
 from __future__ import unicode_literals
+import os
 import re
+import sys
 import unittest
-
+sys.path.insert(0, os.path.abspath('..'))
 from zhon import cedict
 
 
