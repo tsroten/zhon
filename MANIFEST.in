@@ -1,0 +1,2 @@
+include *.txt *.rst
+recursive-include examples *.py

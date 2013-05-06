@@ -1,0 +1,7 @@
+Zhon is written and maintained by:
+
+- Thomas Roten <https://github.com/tsroten>
+
+With help from the following contributors:
+
+- No one yet. Feel free to contribute!
