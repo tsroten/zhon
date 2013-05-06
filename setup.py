@@ -19,7 +19,7 @@ setup(
     url='https://github.com/tsroten/zhon',
     description=('Zhon provides constants used in Chinese text processing.'),
     long_description=long_description,
-    packages=['zhon'],
+    packages=['zhon', 'zhon.cedict'],
     keywords=('chinese mandarin segmentation tokenization punctuation hanzi '
               'unicode radicals han cjk cedict cc-cedict traditional '
               'simplified characters pinyin zhuyin'),
