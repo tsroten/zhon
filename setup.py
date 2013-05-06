@@ -13,13 +13,13 @@ with enc_open('README.rst', 'r', encoding='utf-8') as f:
 
 setup(
     name='zhon',
-    version='0.1.0',
+    version='0.1.1',
     author='Thomas Roten',
     author_email='thomas@roten.us',
     url='https://github.com/tsroten/zhon',
     description=('Zhon provides constants used in Chinese text processing.'),
     long_description=long_description,
-    packages=['zhon'],
+    packages=['zhon', 'zhon.cedict'],
     keywords=('chinese mandarin segmentation tokenization punctuation hanzi '
               'unicode radicals han cjk cedict cc-cedict traditional '
               'simplified characters pinyin zhuyin'),
