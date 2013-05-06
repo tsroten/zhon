@@ -22,7 +22,7 @@ setup(
     packages=['zhon'],
     keywords=('chinese mandarin segmentation tokenization punctuation hanzi '
               'unicode radicals han cjk cedict cc-cedict traditional '
-              'simplified'),
+              'simplified characters pinyin zhuyin'),
     classifiers=[
         'Operating System :: OS Independent',
         'Intended Audience :: Developers',
