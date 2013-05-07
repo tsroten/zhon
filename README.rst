@@ -83,20 +83,12 @@ zhon.unicode.RADICALS
 zhon.pinyin.RE_NUMBER
     This is a regular exprssion pattern (not compiled) that matches valid
     Pinyin (with numbers). It also matches punctuation and whitespace.
-    When compiling, make sure to use the re.X and re.I flags:
-
-.. code:: python
-    >>> re.compile(zhon.pinyin.RE_NUMBER, re.I | re.X)
-    <_sre.SRE_Pattern object at 0x7f94230fd800>
+    When compiling, make sure to use the re.X and re.I flags.
 
 zhon.pinyin.RE_ACCENT
     This is a regular exprssion pattern (not compiled) that matches valid
     Pinyin (with accents). It also matches punctuation and whitespace.
-    When compiling, make sure to use the re.X and re.I flags:
-
-.. code:: python
-    >>> re.compile(zhon.pinyin.RE_ACCENT, re.I | re.X)
-    <_sre.SRE_Pattern object at 0x7f942310bc00>
+    When compiling, make sure to use the re.X and re.I flags.
 
 zhon.cedict.TRADITIONAL
     This contains characters considered by CC-CEDICT to be traditional.
