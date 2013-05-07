@@ -26,8 +26,8 @@ def main():
                                          zhon.unicode.PUNCTUATION))
     traditional = re.compile('[^%s%s]' % (zhon.cedict.TRADITIONAL,
                                           zhon.unicode.PUNCTUATION))
-    pinyin_n = zhon.pinyin.RE_NUMBER
-    pinyin_a = zhon.pinyin.RE_ACCENT
+    pinyin_n = re.compile(zhon.pinyin.RE_NUMBER, re.I | re.X)
+    pinyin_a = re.compile(zhon.pinyin.RE_ACCENT, re.I | re.X)
     zhuyin = re.compile('[^%s%s]' % (zhon.unicode.ZHUYIN,
                                      zhon.unicode.PUNCTUATION))
     ascii = re.compile('[^%s]' % zhon.unicode.ASCII)
