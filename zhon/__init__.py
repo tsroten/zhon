@@ -6,6 +6,7 @@ import logging
 
 from . import unicode
 from . import cedict
+from . import pinyin
 
 logger = logging.getLogger(__name__)
 try:
