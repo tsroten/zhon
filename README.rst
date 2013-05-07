@@ -42,7 +42,8 @@ RE pattern objects for matching Pinyin:
 
 .. code:: python
 
-    >>> zhon.unicode.pinyin.RE_ACCENT.findall('Yǒurén diūshīle yī bǎ fǔzi, zěnme zhǎo yě méiyǒu zhǎodào.')
+    >>> pinyin_a_re = re.compile(zhon.unicode.pinyin.RE_ACCENT, re.I | re.X)
+    >>> pinyin_a_re.findall('Yǒurén diūshīle yī bǎ fǔzi, zěnme zhǎo yě méiyǒu zhǎodào.')
     ['Yǒu', 'rén', ' ', 'diū', 'shī', 'le', ' ', 'yī', ' ', 'bǎ', ' ', 'fǔ', 'zi', ',', ' ', 'zěn', 'me', ' ', 'zhǎo', ' ', 'yě', ' ', 'méi', 'yǒu', ' ', 'zhǎo', 'dào', '.']
 
 Overview
@@ -80,12 +81,22 @@ zhon.unicode.RADICALS
     in dictionaries to index characters.
 
 zhon.pinyin.RE_NUMBER
-    This is a RE pattern object that matches valid Pinyin (with numbers). It
-    also matches punctuation and whitespace.
+    This is a regular exprssion pattern (not compiled) that matches valid
+    Pinyin (with numbers). It also matches punctuation and whitespace.
+    When compiling, make sure to use the re.X and re.I flags:
+
+.. code:: python
+    >>> re.compile(zhon.pinyin.RE_NUMBER, re.I | re.X)
+    <_sre.SRE_Pattern object at 0x7f94230fd800>
 
 zhon.pinyin.RE_ACCENT
-    This is a RE pattern object that matches valid Pinyin (with accents). It
-    also matches punctuation and whitespace.
+    This is a regular exprssion pattern (not compiled) that matches valid
+    Pinyin (with accents). It also matches punctuation and whitespace.
+    When compiling, make sure to use the re.X and re.I flags:
+
+.. code:: python
+    >>> re.compile(zhon.pinyin.RE_ACCENT, re.I | re.X)
+    <_sre.SRE_Pattern object at 0x7f942310bc00>
 
 zhon.cedict.TRADITIONAL
     This contains characters considered by CC-CEDICT to be traditional.

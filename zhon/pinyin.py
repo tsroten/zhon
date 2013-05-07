@@ -1,10 +1,9 @@
 """RE pattern objects for detecting and splitting Pinyin."""
 
 from __future__ import unicode_literals
-import re
 
 
-RE_NUMBER = re.compile("""
+RE_NUMBER = """
     (?:(?:(?:(?:[zcs]h|[gkh])uang) |
     (?:[jqx]iong) |
     (?:[nljqx]iang) |
@@ -31,15 +30,15 @@ RE_NUMBER = re.compile("""
     (?:(?:[zcs]h?|[rbpmdtnlgkhy])ao) |
     (?:(?:[zs]h|[bpmfdtnlgkhwz])ei) |
     (?:(?:[zcs]h?|[bpmdtnlgkhw])ai) |
-    (?:(?:[zcs]h|[rjqxybpmdtnl])i) |
+    (?:(?:[zcs]h?|[rjqxybpmdtnl])i) |
     (?:(?:[zcs]h?|[rwbpmfdtnlgkhjqxwy])u) |
     (?:(?:[zcs]h?|[rmdtnlgkhy])e) |
     (?:[bpmfw]o) |
     (?:(?:[zcs]h|[bpmfdtnlgkhzcswy])a) |
     (?:[ea]ng|[ea]n|ou|ao|[ea]i|[aeo])
-    )[0-5]?)|[\d]+|[,.;:'"!?$\u00A5\-\s]""", re.X | re.I)
+    )[0-5]?)|[\d]+|[,.;:'"!?$\u00A5\-\s]"""
 
-RE_ACCENT = re.compile("""
+RE_ACCENT = """
     (?:\u00B7?(?:(?:[zcs]h|[gkh])u
     [a\u0101\u00E0\u00E1\u01CE]ng) |
     (?:[jqx]i[o\u014D\u00F3\u01D2\u00F2]ng) |
@@ -81,4 +80,4 @@ RE_ACCENT = re.compile("""
     [a\u0101\u00E0\u00E1\u01CE]o|[a\u0101\u00E0\u00E1\u01CE]i|
     [e\u0113\u00E9\u011B\u00E8]i|[a\u0101\u00E0\u00E1\u01CE]|
     [e\u0113\u00E9\u011B\u00E8]|[o\u014D\u00F3\u01D2\u00F2])
-    )|[\d]+|[,.;:'"!?$\u00A5\-\s]""", re.X | re.I)
+    )|[\d]+|[,.;:'"!?$\u00A5\-\s]"""
