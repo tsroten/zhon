@@ -5,8 +5,11 @@ through build_string so as to avoid problems on narrow Python builds.
 """
 
 from __future__ import unicode_literals
+import logging
 import string
 import sys
+
+logger = logging.getLogger(__name__)
 
 chr_func = chr if sys.version_info >= (3, ) else unichr
 
@@ -23,17 +26,22 @@ def build_string(*args):
              0x20000]
 
     """
+    logger.debug('Building a string from %s args.' % str(len(args)))
     L = []
     for a in args:
         for i in a:
             if isinstance(i, list):
                 lower, upper = i
                 if lower > sys.maxunicode or upper > sys.maxunicode:
+                    logger.debug('Throwing out %s and %s due to '
+                                 'narrow Python build.' % (lower, upper))
                     continue
                 lower, upper = chr_func(lower), chr_func(upper)
                 L.append('%s-%s' % (lower, upper))
             else:
                 if i > sys.maxunicode:
+                    logger.debug('Throwing out %s due to narrow '
+                                 'Python build.' % i)
                     continue
                 L.append(chr_func(i))
     return ''.join(L)

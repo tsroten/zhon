@@ -13,7 +13,7 @@ with enc_open('README.rst', 'r', encoding='utf-8') as f:
 
 setup(
     name='zhon',
-    version='0.1.1',
+    version='0.2.0',
     author='Thomas Roten',
     author_email='thomas@roten.us',
     url='https://github.com/tsroten/zhon',

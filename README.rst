@@ -16,21 +16,35 @@ Zhon's constants are formatted as strings containing Unicode code ranges. This i
 useful for compiling `RE pattern objects <http://docs.python.org/3/library/re.html#regular-expression-objects>`_. They can be combined to
 make RE pattern objects as needed.
 
+Finding Chinese characters in a string:
+
 .. code:: python
 
     >>> re.findall('[%s]' % zhon.unicode.HAN_IDEOGRAPHS, 'Hello = 你好')
     ['你', '好']
+
+Splitting Chinese text on punctuation:
 
 .. code:: python
 
     >>> re.split('[%s]' % zhon.unicode.PUNCTUATION, '有人丢失了一把斧子，怎么找也没有找到。')
     ['有人丢失了一把斧子', '怎么找也没有找到', '']
 
+Finding all non-Chinese characters in a string:
+
 .. code:: python
 
     >>> not_zh_re = re.compile('[^%s%s]' % (zhon.unicode.HAN_IDEOGRAPHS, zhon.unicode.PUNCTUATION))
     >>> not_zh_re.findall('我叫Thomas。你叫什么名字？')
     ['T', 'h', 'o', 'm', 'a', 's']
+
+RE pattern objects for matching Pinyin:
+
+.. code:: python
+
+    >>> pinyin_a_re = re.compile(zhon.unicode.pinyin.RE_ACCENT, re.I | re.X)
+    >>> pinyin_a_re.findall('Yǒurén diūshīle yī bǎ fǔzi, zěnme zhǎo yě méiyǒu zhǎodào.')
+    ['Yǒu', 'rén', ' ', 'diū', 'shī', 'le', ' ', 'yī', ' ', 'bǎ', ' ', 'fǔ', 'zi', ',', ' ', 'zěn', 'me', ' ', 'zhǎo', ' ', 'yě', ' ', 'méi', 'yǒu', ' ', 'zhǎo', 'dào', '.']
 
 Overview
 --------
@@ -46,7 +60,10 @@ zhon.unicode.PUNCTUATION
     This contains punctuation used in Chinese text.
 
 zhon.unicode.PINYIN
-    This contains characters used in Pinyin (both numbered and accented).
+    This contains characters used in Pinyin (both numbered and accented). This
+    can be used to quickly verify text as only having Pinyin-compatible
+    characters. It does not check for invalid syllables or spelling -- it only
+    contains individual characters.
 
 zhon.unicode.ZHUYIN
     This contains characters used in Zhuyin (Bopomofo).
@@ -62,6 +79,24 @@ zhon.unicode.RADICALS
     <http://www.unicode.org/charts/PDF/U2F00.pdf>`_ and the `CJK Radicals
     Supplement <http://www.unicode.org/charts/PDF/U2E80.pdf>`_. They are used
     in dictionaries to index characters.
+
+zhon.pinyin.RE_NUMBER
+    This is a regular exprssion pattern (not compiled) that matches valid
+    Pinyin (with numbers). It also matches punctuation and whitespace.
+    When compiling, make sure to use the re.X and re.I flags:
+
+.. code:: python
+    >>> re.compile(zhon.pinyin.RE_NUMBER, re.I | re.X)
+    <_sre.SRE_Pattern object at 0x7f94230fd800>
+
+zhon.pinyin.RE_ACCENT
+    This is a regular exprssion pattern (not compiled) that matches valid
+    Pinyin (with accents). It also matches punctuation and whitespace.
+    When compiling, make sure to use the re.X and re.I flags:
+
+.. code:: python
+    >>> re.compile(zhon.pinyin.RE_ACCENT, re.I | re.X)
+    <_sre.SRE_Pattern object at 0x7f942310bc00>
 
 zhon.cedict.TRADITIONAL
     This contains characters considered by CC-CEDICT to be traditional.
