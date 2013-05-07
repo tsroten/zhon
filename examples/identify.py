@@ -26,8 +26,8 @@ def main():
                                          zhon.unicode.PUNCTUATION))
     traditional = re.compile('[^%s%s]' % (zhon.cedict.TRADITIONAL,
                                           zhon.unicode.PUNCTUATION))
-    pinyin = re.compile('[^%s%s]' % (zhon.unicode.PINYIN,
-                                     zhon.unicode.PUNCTUATION))
+    pinyin_n = zhon.pinyin.RE_NUMBER
+    pinyin_a = zhon.pinyin.RE_ACCENT
     zhuyin = re.compile('[^%s%s]' % (zhon.unicode.ZHUYIN,
                                      zhon.unicode.PUNCTUATION))
     ascii = re.compile('[^%s]' % zhon.unicode.ASCII)
@@ -41,7 +41,8 @@ def main():
             print('Input is simplified.')
         elif traditional.search(args.text) is None:
             print('Input is traditional.')
-    elif pinyin.search(args.text) is None:
+    elif (len(''.join(pinyin_a.findall(args.text))) == len(args.text) or
+          len(''.join(pinyin_n.findall(args.text))) == len(args.text)):
         print('Input is Pinyin.')
     elif zhuyin.search(args.text) is None:
         print('Input is Zhuyin.')
