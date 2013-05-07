@@ -16,15 +16,21 @@ Zhon's constants are formatted as strings containing Unicode code ranges. This i
 useful for compiling `RE pattern objects <http://docs.python.org/3/library/re.html#regular-expression-objects>`_. They can be combined to
 make RE pattern objects as needed.
 
+Finding Chinese characters in a string:
+
 .. code:: python
 
     >>> re.findall('[%s]' % zhon.unicode.HAN_IDEOGRAPHS, 'Hello = 你好')
     ['你', '好']
 
+Splitting Chinese text on punctuation:
+
 .. code:: python
 
     >>> re.split('[%s]' % zhon.unicode.PUNCTUATION, '有人丢失了一把斧子，怎么找也没有找到。')
     ['有人丢失了一把斧子', '怎么找也没有找到', '']
+
+Finding all non-Chinese characters in a string:
 
 .. code:: python
 
