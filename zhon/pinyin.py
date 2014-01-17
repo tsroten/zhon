@@ -36,7 +36,7 @@ RE_NUMBER = """
     (?:[bpmfw]o) |
     (?:(?:[zcs]h|[bpmfdtnlgkhzcswy])a) |
     (?:[ea]ng|[ea]n|ou|ao|[ea]i|[aeo])
-    )[0-5]?)|[\d]+|[,.;:'"!?$\u00A5\-\s]"""
+    )[0-5]?)"""
 
 RE_ACCENT = """
     (?:\u00B7?(?:(?:[zcs]h|[gkh])u
@@ -80,4 +80,4 @@ RE_ACCENT = """
     [a\u0101\u00E0\u00E1\u01CE]o|[a\u0101\u00E0\u00E1\u01CE]i|
     [e\u0113\u00E9\u011B\u00E8]i|[a\u0101\u00E0\u00E1\u01CE]|
     [e\u0113\u00E9\u011B\u00E8]|[o\u014D\u00F3\u01D2\u00F2])
-    )|[\d]+|[,.;:'"!?$\u00A5\-\s]"""
+    )"""
