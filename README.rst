@@ -81,12 +81,12 @@ zhon.unicode.RADICALS
     in dictionaries to index characters.
 
 zhon.pinyin.RE_NUMBER
-    This is a regular exprssion pattern (not compiled) that matches valid
+    This is a regular expression pattern (not compiled) that matches valid
     Pinyin (with numbers). It also matches punctuation and whitespace.
     When compiling, make sure to use the re.X and re.I flags.
 
 zhon.pinyin.RE_ACCENT
-    This is a regular exprssion pattern (not compiled) that matches valid
+    This is a regular expression pattern (not compiled) that matches valid
     Pinyin (with accents). It also matches punctuation and whitespace.
     When compiling, make sure to use the re.X and re.I flags.
 
