@@ -9,6 +9,9 @@ import unittest
 from zhon import pinyin
 
 
+NUM_WORDS = 50   # Number of random words to test
+WORD_LENGTH = 4    # Length of random words (number of syllables)
+
 VALID_SYLS = (  # 411 total syllables, including 'r'
     'ba', 'pa', 'ma', 'fa', 'da', 'ta', 'na', 'la', 'ga', 'ka', 'ha', 'za',
     'ca', 'sa', 'zha', 'cha', 'sha', 'a', 'bo', 'po', 'mo', 'fo', 'yo', 'lo',
@@ -57,6 +60,8 @@ VALID_SYLS = (  # 411 total syllables, including 'r'
 
 N_SYL = re.compile(pinyin.N_SYL, re.X | re.I)
 A_SYL = re.compile(pinyin.A_SYL, re.X | re.I)
+N_WORD = re.compile(pinyin.N_WORD, re.X | re.I)
+A_WORD = re.compile(pinyin.A_WORD, re.X | re.I)
 
 
 VOWELS = 'aeiou\u00FC'
@@ -131,3 +136,32 @@ class TestPinyinSyllables(unittest.TestCase):
                 _vs[n] = "'%s" % _vs[n]
         s = ''.join(_vs)
         self.assertEqual(A_SYL.findall(s), vs)
+
+
+def create_word(accented=False):
+    if accented:
+        tone = lambda: str(random.randint(1, 5))
+        vs = [num_syl_to_acc(s + tone()) for s in VALID_SYLS]
+    else:
+        vs = [s + str(random.randint(1, 5)) for s in VALID_SYLS]
+    word = vs[random.randint(0, len(vs) - 1)]
+    for n in range(1, WORD_LENGTH):
+        num = random.randint(0, len(vs) - 1)
+        word += ['-', ''][random.randint(0, 1)]
+        if VALID_SYLS[num][0] in 'aeo' and word[-1] != '-':
+            word += "'"
+        word += vs[num]
+    return word
+
+
+class TestPinyinWords(unittest.TestCase):
+
+    def test_number_words(self):
+        for n in range(0, NUM_WORDS):
+            word = create_word()
+            self.assertEqual(N_WORD.match(word).group(0), word)
+
+    def test_accent_words(self):
+        for n in range(0, NUM_WORDS):
+            word = create_word(accented=True)
+            self.assertEqual(A_WORD.match(word).group(0), word)

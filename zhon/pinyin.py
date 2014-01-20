@@ -9,6 +9,10 @@ used is:
         vowel (a hyphen or apostrophe doesn't count).
     * If the above didn't match, repeat for the next longest valid match.
 
+Lookahead/lookbehind assertions are used to ensure that hyphens and
+apostrophes are only included in words if used correctly. This helps to weed
+out non-Pinyin strings.
+
 """
 
 from __future__ import unicode_literals
@@ -107,5 +111,15 @@ ACCENTED_SYLLABLE = """
     'o': _O, 'u': _U, 'v': _V
 }
 
+NUMBERED_WORD = """
+    (?:%(ns)s(?:-(?=%(ns)s)|'(?=[aeo])(?=%(ns)s))?[0-9]*)+
+""" % {'ns': NUMBERED_SYLLABLE}
+
+ACCENTED_WORD = """
+    (?:%(as)s(?:-(?=%(as)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(as)s))?[0-9]*)+
+""" % {'as': ACCENTED_SYLLABLE, 'a': _A, 'e': _E, 'o': _O}
+
 N_SYL = NUMBERED_SYL = NUMBERED_SYLLABLE
 A_SYL = ACCENTED_SYL = ACCENTED_SYLLABLE
+N_WORD = NUMBERED_WORD
+A_WORD = ACCENTED_WORD
