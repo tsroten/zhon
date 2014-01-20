@@ -84,8 +84,6 @@ PUNCTUATION = ('\u3001-\u3003'  # comma, full-stop, ditto mark
                '\uFE4F'  # wavy underline
                ) + string.punctuation
 
-ASCII = '\u0000-\u007F'
-
 PINYIN = ('\u003A'  # ascii colon - for the vowel u:
           '\u0031-\u0035'  # ascii numbers 1-5
           '\u0041-\u005A'  # ascii uppercase A-Z
