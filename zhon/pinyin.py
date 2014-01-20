@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """RE pattern objects for detecting and splitting Pinyin.
 
 Splitting pinyin into syllables is not as simple as looking for the maximum
@@ -16,6 +17,18 @@ out non-Pinyin strings.
 """
 
 from __future__ import unicode_literals
+from string import punctuation, whitespace
+
+vowels = (
+    'aɑeiouüvAEIOUÜV'
+    'āɑ̄ēīōūǖĀĒĪŌŪǕ'
+    'áɑ́éíóúǘÁÉÍÓÚǗ'
+    'ǎɑ̌ěǐǒǔǚǍĚǏǑǓǙ'
+    'àɑ̀èìòùǜÀÈÌÒÙǛ'
+)
+consonants = 'bpmfdtnlgkhjqxzcsrzcswyBPMFDTNLGKHJQXZCSRZCSWY'
+marks = "·012345:-'"
+printable = vowels + consonants + marks[:-3] + whitespace + punctuation
 
 
 # This is the end-of-syllable-consonant lookahead assertion.
