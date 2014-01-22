@@ -83,10 +83,3 @@ PUNCTUATION = ('\u3001-\u3003'  # comma, full-stop, ditto mark
                '\u2026-\u2027'  # elipsis and middle dot
                '\uFE4F'  # wavy underline
                ) + string.punctuation
-
-ZHUYIN = ('\u3105-\u312D'  # Bopomofo
-          '\u31A0-\u31BA'  # Bopomofo Extended
-          '\u02C7'  # caron (3rd tone mark)
-          '\u02CA-\u02CB'  # accute and grace accent (2nd and 4th tone marks)
-          '\u02D9'  # dot above (5th tone mark)
-          ) + string.whitespace
