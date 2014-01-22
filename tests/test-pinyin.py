@@ -58,10 +58,8 @@ VALID_SYLS = (  # 411 total syllables, including 'r'
     'xuan', 'yuan', 'jun', 'qun', 'xun', 'yun', 'er'
 )
 
-N_SYL = re.compile(pinyin.n_syl, re.X | re.I)
-A_SYL = re.compile(pinyin.a_syl, re.X | re.I)
-N_WORD = re.compile(pinyin.n_word, re.X | re.I)
-A_WORD = re.compile(pinyin.a_word, re.X | re.I)
+SYL = re.compile(pinyin.syl, re.X | re.I)
+WORD = re.compile(pinyin.word, re.X | re.I)
 
 
 VOWELS = 'aeiou\u00FC'
@@ -122,20 +120,19 @@ class TestPinyinSyllables(unittest.TestCase):
             if _vs[n][0] in 'aeo':
                 _vs[n] = "'%s" % _vs[n]
         s = ''.join(_vs)
-        self.assertEqual(N_SYL.findall(s), vs)
+        self.assertEqual(SYL.findall(s), vs)
 
     def test_accent_syllables(self):
         vs = list(VALID_SYLS)
         _vs = []
         for n in range(0, len(vs)):
             syl = vs[n]
-            if syl != 'r':
-                vs[n] = num_syl_to_acc(vs[n] + str(random.randint(1, 5)))
+            vs[n] = num_syl_to_acc(vs[n] + str(random.randint(1, 5)))
             _vs.append(vs[n])
             if syl[0] in 'aeo':
                 _vs[n] = "'%s" % _vs[n]
         s = ''.join(_vs)
-        self.assertEqual(A_SYL.findall(s), vs)
+        self.assertEqual(SYL.findall(s), vs)
 
 
 def create_word(accented=False):
@@ -159,9 +156,9 @@ class TestPinyinWords(unittest.TestCase):
     def test_number_words(self):
         for n in range(0, NUM_WORDS):
             word = create_word()
-            self.assertEqual(N_WORD.match(word).group(0), word)
+            self.assertEqual(WORD.match(word).group(0), word)
 
     def test_accent_words(self):
         for n in range(0, NUM_WORDS):
             word = create_word(accented=True)
-            self.assertEqual(A_WORD.match(word).group(0), word)
+            self.assertEqual(WORD.match(word).group(0), word)

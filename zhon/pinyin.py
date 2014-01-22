@@ -30,46 +30,6 @@ consonants = 'bpmfdtnlgkhjqxzcsrzcswyBPMFDTNLGKHJQXZCSRZCSWY'
 marks = "·012345:-'"
 printable = vowels + consonants + marks[:-3] + whitespace + punctuation
 
-
-# This is the end-of-syllable-consonant lookahead assertion.
-_numbered_constant_end = '(?![aeiouv\u00FC]|u:)'
-
-numbered_syllable = """
-    (?:
-        (?:(?:[zcs]h|[gkh])uang%(consonant_end)s) |
-        (?:[jqx]iong%(consonant_end)s) |
-        (?:[nljqx]iang%(consonant_end)s) |
-        (?:(?:[zcs]h?|[dtnlgkhrjqxy])uan%(consonant_end)s) |
-        (?:(?:[zcs]h|[gkh])uai) |
-        (?:(?:[zc]h?|[rdtnlgkhsy])ong%(consonant_end)s) |
-        (?:(?:[zcs]h?|[rbpmfdtnlgkhw])?eng%(consonant_end)s) |
-        (?:(?:[zcs]h?|[rbpmfdtnlgkhwy])?ang%(consonant_end)s) |
-        (?:[bpmdtnljqxy]ing%(consonant_end)s) |
-        (?:[bpmdtnljqx]ia(?:o|n%(consonant_end)s)) |
-        (?:[nl](?:v|u:|\u00FC)e?) |
-        (?:[jqxy]ue) |
-        (?:[bpmnljqxy]in%(consonant_end)s) |
-        (?:[mdnljqx]iu) |
-        (?:[bpmdtnljqx]ie) |
-        (?:[dljqx]ia) |
-        (?:(?:[zcs]h?|[rdtnlgkhxqjy])un%(consonant_end)s) |
-        (?:(?:[zcs]h?|[rdtgkh])ui) |
-        (?:(?:[zcs]h?|[rdtnlgkh])uo) |
-        (?:(?:[zcs]h|[rgkh])ua) |
-        (?:(?:[zcs]h?|[rbpmfdngkhw])?en%(consonant_end)s) |
-        (?:(?:[zcs]h?|[rbpmfdtnlgkhwy])?an%(consonant_end)s) |
-        (?:(?:[zcs]h?|[rpmfdtnlgkhy])?ou) |
-        (?:(?:[zcs]h?|[rbpmdtnlgkhy])?ao) |
-        (?:(?:[zs]h|[bpmfdtnlgkhwz])?ei) |
-        (?:(?:[zcs]h?|[bpmdtnlgkhw])?ai) |
-        (?:(?:[zcs]h?|[rjqxybpmdtnl])i) |
-        (?:(?:[zcs]h?|[rwbpmfdtnlgkhjqxwy])u) |
-        (?:(?:[zcs]h?|[rmdtnlgkhy])?e) |
-        (?:[bpmfwyl]?o) |
-        (?:(?:[zcs]h|[bpmfdtnlgkhzcswy])?a)
-    )(?:r%(consonant_end)s)?[0-5]?
-""" % {'consonant_end': _numbered_constant_end}
-
 _a = 'a\u0101\u00E0\u00E1\u01CE'
 _e = 'e\u0113\u00E9\u011B\u00E8'
 _i = 'i\u012B\u00ED\u01D0\u00EC'
@@ -78,11 +38,11 @@ _u = 'u\u016B\u00FA\u01D4\u00F9'
 _v = 'v\u00FC\u01D6\u01D8\u01DA\u01DC'
 
 # This is the end-of-syllable-consonant lookahead assertion.
-_accented_constant_end = '(?![%(a)s%(e)s%(i)s%(o)s%(u)s%(v)s]|u:)' % {
+_consonant_end = '(?![%(a)s%(e)s%(i)s%(o)s%(u)s%(v)s]|u:)' % {
     'a': _a, 'e': _e, 'i': _i, 'o': _o, 'u': _u, 'v': _v
 }
 
-accented_syllable = """
+syl = syllable = """
     (?:\u00B7|\u2027)?
     (?:
         (?:(?:[zcs]h|[gkh])u[%(a)s]ng%(consonant_end)s) |
@@ -118,21 +78,12 @@ accented_syllable = """
         (?:(?:[zcs]h?|[rmdtnlgkhy])?[%(e)s]) |
         (?:[bpmfwyl]?[%(o)s]) |
         (?:(?:[zcs]h|[bpmfdtnlgkhzcswy])?[%(a)s])
-    )(?:r%(consonant_end)s)?
+    )(?:r%(consonant_end)s)?[0-5]?
 """ % {
-    'consonant_end': _accented_constant_end, 'a': _a, 'e': _e, 'i': _i,
+    'consonant_end': _consonant_end, 'a': _a, 'e': _e, 'i': _i,
     'o': _o, 'u': _u, 'v': _v
 }
 
-numbered_word = """
-    (?:%(ns)s(?:-(?=%(ns)s)|'(?=[aeo])(?=%(ns)s))?[0-9]*)+
-""" % {'ns': numbered_syllable}
-
-accented_word = """
+word = """
     (?:%(as)s(?:-(?=%(as)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(as)s))?[0-9]*)+
-""" % {'as': accented_syllable, 'a': _a, 'e': _e, 'o': _o}
-
-n_syl = numbered_syl = numbered_syllable
-a_syl = accented_syl = accented_syllable
-n_word = numbered_word
-a_word = accented_word
+""" % {'as': syllable, 'a': _a, 'e': _e, 'o': _o}
