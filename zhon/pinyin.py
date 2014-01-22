@@ -32,9 +32,9 @@ printable = vowels + consonants + marks[:-3] + whitespace + punctuation
 
 
 # This is the end-of-syllable-consonant lookahead assertion.
-_NUMBERED_CONSONANT_END = '(?![aeiouv\u00FC]|u:)'
+_numbered_constant_end = '(?![aeiouv\u00FC]|u:)'
 
-NUMBERED_SYLLABLE = """
+numbered_syllable = """
     (?:
         (?:(?:[zcs]h|[gkh])uang%(consonant_end)s) |
         (?:[jqx]iong%(consonant_end)s) |
@@ -68,21 +68,21 @@ NUMBERED_SYLLABLE = """
         (?:[bpmfwyl]?o) |
         (?:(?:[zcs]h|[bpmfdtnlgkhzcswy])?a)
     )(?:r%(consonant_end)s)?[0-5]?
-""" % {'consonant_end': _NUMBERED_CONSONANT_END}
+""" % {'consonant_end': _numbered_constant_end}
 
-_A = 'a\u0101\u00E0\u00E1\u01CE'
-_E = 'e\u0113\u00E9\u011B\u00E8'
-_I = 'i\u012B\u00ED\u01D0\u00EC'
-_O = 'o\u014D\u00F3\u01D2\u00F2'
-_U = 'u\u016B\u00FA\u01D4\u00F9'
-_V = 'v\u00FC\u01D6\u01D8\u01DA\u01DC'
+_a = 'a\u0101\u00E0\u00E1\u01CE'
+_e = 'e\u0113\u00E9\u011B\u00E8'
+_i = 'i\u012B\u00ED\u01D0\u00EC'
+_o = 'o\u014D\u00F3\u01D2\u00F2'
+_u = 'u\u016B\u00FA\u01D4\u00F9'
+_v = 'v\u00FC\u01D6\u01D8\u01DA\u01DC'
 
 # This is the end-of-syllable-consonant lookahead assertion.
-_ACCENTED_CONSONANT_END = '(?![%(a)s%(e)s%(i)s%(o)s%(u)s%(v)s]|u:)' % {
-    'a': _A, 'e': _E, 'i': _I, 'o': _O, 'u': _U, 'v': _V
+_accented_constant_end = '(?![%(a)s%(e)s%(i)s%(o)s%(u)s%(v)s]|u:)' % {
+    'a': _a, 'e': _e, 'i': _i, 'o': _o, 'u': _u, 'v': _v
 }
 
-ACCENTED_SYLLABLE = """
+accented_syllable = """
     (?:\u00B7|\u2027)?
     (?:
         (?:(?:[zcs]h|[gkh])u[%(a)s]ng%(consonant_end)s) |
@@ -120,19 +120,19 @@ ACCENTED_SYLLABLE = """
         (?:(?:[zcs]h|[bpmfdtnlgkhzcswy])?[%(a)s])
     )(?:r%(consonant_end)s)?
 """ % {
-    'consonant_end': _ACCENTED_CONSONANT_END, 'a': _A, 'e': _E, 'i': _I,
-    'o': _O, 'u': _U, 'v': _V
+    'consonant_end': _accented_constant_end, 'a': _a, 'e': _e, 'i': _i,
+    'o': _o, 'u': _u, 'v': _v
 }
 
-NUMBERED_WORD = """
+numbered_word = """
     (?:%(ns)s(?:-(?=%(ns)s)|'(?=[aeo])(?=%(ns)s))?[0-9]*)+
-""" % {'ns': NUMBERED_SYLLABLE}
+""" % {'ns': numbered_syllable}
 
-ACCENTED_WORD = """
+accented_word = """
     (?:%(as)s(?:-(?=%(as)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(as)s))?[0-9]*)+
-""" % {'as': ACCENTED_SYLLABLE, 'a': _A, 'e': _E, 'o': _O}
+""" % {'as': accented_syllable, 'a': _a, 'e': _e, 'o': _o}
 
-N_SYL = NUMBERED_SYL = NUMBERED_SYLLABLE
-A_SYL = ACCENTED_SYL = ACCENTED_SYLLABLE
-N_WORD = NUMBERED_WORD
-A_WORD = ACCENTED_WORD
+n_syl = numbered_syl = numbered_syllable
+a_syl = accented_syl = accented_syllable
+n_word = numbered_word
+a_word = accented_word

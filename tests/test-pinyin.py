@@ -58,10 +58,10 @@ VALID_SYLS = (  # 411 total syllables, including 'r'
     'xuan', 'yuan', 'jun', 'qun', 'xun', 'yun', 'er'
 )
 
-N_SYL = re.compile(pinyin.N_SYL, re.X | re.I)
-A_SYL = re.compile(pinyin.A_SYL, re.X | re.I)
-N_WORD = re.compile(pinyin.N_WORD, re.X | re.I)
-A_WORD = re.compile(pinyin.A_WORD, re.X | re.I)
+N_SYL = re.compile(pinyin.n_syl, re.X | re.I)
+A_SYL = re.compile(pinyin.a_syl, re.X | re.I)
+N_WORD = re.compile(pinyin.n_word, re.X | re.I)
+A_WORD = re.compile(pinyin.a_word, re.X | re.I)
 
 
 VOWELS = 'aeiou\u00FC'
