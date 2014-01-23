@@ -96,34 +96,6 @@ zhon.cedict.TRADITIONAL
 zhon.cedict.SIMPLIFIED
     This contains characters considered by CC-CEDICT to be simplified.
 
-Narrow Python Builds
---------------------
-
-If you have a narrow Python 2 build and run the following code, a ValueError is
-raised:
-
-.. code:: python
-
-    >>> unichr(0x20000)
-    Traceback (most recent call last):
-      File "<stdin>", line 1, in <module>
-    ValueError: unichr() arg not in range(0x10000) (narrow Python build)
-
-Narrow Python 3.1/3.2 builds have problems compiling RE pattern objects using
-characters ranges greater than 0xFFFF:
-
-.. code:: python
-
-    >>> re.compile('[\U00020000-\U00020005]')
-    Traceback (most recent call last):
-    ...
-    sre_constants.error: bad character range
-
-Narrow Python builds incorrectly handle the character `\U00020000` and others
-like it. Zhon takes this into account when building its constants so that you
-don't have to worry about it -- characters greater than your Python build's
-`sys.maxunicode` are not included in Zhon's constants.
-
 Name
 ----
 
