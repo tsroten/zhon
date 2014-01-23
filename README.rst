@@ -8,8 +8,6 @@ processing:
 * Chinese punctuation
 * Pinyin and Zhuyin characters
 * Traditional and simplified characters
-* ASCII characters
-* Fullwidth alphanumeric variants
 * Chinese radicals (as used in dictionaries)
 
 Zhon's constants are formatted as strings containing Unicode code ranges. This is
@@ -67,12 +65,6 @@ zhon.unicode.PINYIN
 
 zhon.unicode.ZHUYIN
     This contains characters used in Zhuyin (Bopomofo).
-
-zhon.unicode.ASCII
-    This contains all ASCII characters.
-
-zhon.unicode.FULLWIDTH_ALPHANUMERIC
-    This contains the fullwidth variants for A-Z, a-z, and 0-9.
 
 zhon.unicode.RADICALS
     This contains the `Kangxi radicals
