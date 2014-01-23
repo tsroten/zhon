@@ -11,6 +11,8 @@ from zhon import pinyin
 
 NUM_WORDS = 50   # Number of random words to test
 WORD_LENGTH = 4    # Length of random words (number of syllables)
+NUM_SENT = 10     # Number of random sentences to test
+SENT_LENGTH = 5   # Length of random sentences (number of words)
 
 VALID_SYLS = (  # 411 total syllables, including 'r'
     'ba', 'pa', 'ma', 'fa', 'da', 'ta', 'na', 'la', 'ga', 'ka', 'ha', 'za',
@@ -58,8 +60,9 @@ VALID_SYLS = (  # 411 total syllables, including 'r'
     'xuan', 'yuan', 'jun', 'qun', 'xun', 'yun', 'er'
 )
 
-SYL = re.compile(pinyin.syl, re.X | re.I)
+SYL = re.compile(pinyin.syllable, re.X | re.I)
 WORD = re.compile(pinyin.word, re.X | re.I)
+SENT = re.compile(pinyin.sentence, re.X | re.I)
 
 
 VOWELS = 'aeiou\u00FC'
@@ -162,3 +165,25 @@ class TestPinyinWords(unittest.TestCase):
         for n in range(0, NUM_WORDS):
             word = create_word(accented=True)
             self.assertEqual(WORD.match(word).group(0), word)
+
+
+def create_sentence(accented=False):
+    _sent = []
+    for n in range(0, SENT_LENGTH):
+        _sent.append(create_word(accented=accented))
+    sentence = [_sent.pop(0)]
+    sentence.extend([random.choice([' ', ', ', '; ']) + w for w in _sent])
+    return ''.join(sentence) + '.'
+
+
+class TestPinyinSentences(unittest.TestCase):
+
+    def test_number_sentences(self):
+        for n in range(0, NUM_SENT):
+            sentence = create_sentence()
+            self.assertEqual(SENT.match(sentence).group(0), sentence)
+
+    def test_accent_sentences(self):
+        for n in range(0, NUM_SENT):
+            sentence = create_sentence(accented=True)
+            self.assertEqual(SENT.match(sentence).group(0), sentence)

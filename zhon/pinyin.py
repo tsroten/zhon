@@ -17,7 +17,8 @@ out non-Pinyin strings.
 """
 
 from __future__ import unicode_literals
-from string import punctuation, whitespace
+from string import whitespace
+
 
 vowels = (
     'aɑeiouüvAEIOUÜV'
@@ -28,7 +29,9 @@ vowels = (
 )
 consonants = 'bpmfdtnlgkhjqxzcsrzcswyBPMFDTNLGKHJQXZCSRZCSWY'
 marks = "·012345:-'"
-printable = vowels + consonants + marks[:-3] + whitespace + punctuation
+non_stops = """"#$%&'()*+,-/:;<=>@[\]^_`{|}~"""
+stops = '.!?'
+printable = vowels + consonants + marks[:-3] + whitespace + stops + non_stops
 
 _a = 'a\u0101\u00E0\u00E1\u01CE'
 _e = 'e\u0113\u00E9\u011B\u00E8'
@@ -87,3 +90,7 @@ syl = syllable = """
 word = """
     (?:%(as)s(?:-(?=%(as)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(as)s))?[0-9]*)+
 """ % {'as': syllable, 'a': _a, 'e': _e, 'o': _o}
+
+sent = sentence = """
+    (?:%(word)s|[%(non_stops)s\s])+[.!?]['"\]\}\)]*
+""" % {'word': word, 'non_stops': non_stops}
