@@ -132,7 +132,7 @@ Zhon is short for ZHongwen cONstants. It is pronounced like the name 'John'.
 Requirements
 ------------
 
-Zhon supports Python 2.6, 2.7, 3.1, 3.2, and 3.3.
+Zhon supports Python 2.7 and 3.
 
 Install
 -------
