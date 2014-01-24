@@ -45,52 +45,52 @@ _consonant_end = '(?![%(a)s%(e)s%(i)s%(o)s%(u)s%(v)s]|u:)' % {
     'a': _a, 'e': _e, 'i': _i, 'o': _o, 'u': _u, 'v': _v
 }
 
-syl = syllable = """
-    (?:\u00B7|\u2027)?
-    (?:
-        (?:(?:[zcs]h|[gkh])u[%(a)s]ng%(consonant_end)s) |
-        (?:[jqx]i[%(o)s]ng%(consonant_end)s) |
-        (?:[nljqx]i[%(a)s]ng%(consonant_end)s) |
-        (?:(?:[zcs]h?|[dtnlgkhrjqxy])u[%(a)s]n%(consonant_end)s) |
-        (?:(?:[zcs]h|[gkh])u[%(a)s]i) |
-        (?:(?:[zc]h?|[rdtnlgkhsy])[%(o)s]ng%(consonant_end)s) |
-        (?:(?:[zcs]h?|[rbpmfdtnlgkhw])?[%(e)s]ng%(consonant_end)s) |
-        (?:(?:[zcs]h?|[rbpmfdtnlgkhwy])?[%(a)s]ng%(consonant_end)s) |
-        (?:[bpmdtnljqxy][%(i)s]ng%(consonant_end)s) |
-        (?:[bpmdtnljqx]i[%(a)s]n%(consonant_end)s) |
-        (?:[bpmdtnljqx]i[%(a)s]o) |
-        (?:[nl](?:v|u:|\u00FC)[%(e)s]) |
-        (?:[nl](?:[%(v)s]|u:)) |
-        (?:[jqxy]u[%(e)s]) |
-        (?:[bpmnljqxy][%(i)s]n%(consonant_end)s) |
-        (?:[mdnljqx]i[%(u)s]) |
-        (?:[bpmdtnljqx]i[%(e)s]) |
-        (?:[dljqx]i[%(a)s]) |
-        (?:(?:[zcs]h?|[rdtnlgkhxqjy])[%(u)s]n%(consonant_end)s) |
-        (?:(?:[zcs]h?|[rdtgkh])u[%(i)s]) |
-        (?:(?:[zcs]h?|[rdtnlgkh])u[%(o)s]) |
-        (?:(?:[zcs]h|[rgkh])u[%(a)s]) |
-        (?:(?:[zcs]h?|[rbpmfdngkhw])?[%(e)s]n%(consonant_end)s) |
-        (?:(?:[zcs]h?|[rbpmfdtnlgkhwy])?[%(a)s]n%(consonant_end)s) |
-        (?:(?:[zcs]h?|[rpmfdtnlgkhy])?[%(o)s]u) |
-        (?:(?:[zcs]h?|[rbpmdtnlgkhy])?[%(a)s]o) |
-        (?:(?:[zs]h|[bpmfdtnlgkhwz])?[%(e)s]i) |
-        (?:(?:[zcs]h?|[bpmdtnlgkhw])?[%(a)s]i) |
-        (?:(?:[zcs]h?|[rjqxybpmdtnl])[%(i)s]) |
-        (?:(?:[zcs]h?|[rwbpmfdtnlgkhjqxwy])[%(u)s]) |
-        (?:(?:[zcs]h?|[rmdtnlgkhy])?[%(e)s]) |
-        (?:[bpmfwyl]?[%(o)s]) |
-        (?:(?:[zcs]h|[bpmfdtnlgkhzcswy])?[%(a)s])
-    )(?:r%(consonant_end)s)?[0-5]?
-""" % {
+syl = syllable = (
+    '(?:\u00B7|\u2027)?'
+    '(?:'
+    '(?:(?:[zcs]h|[gkh])u[%(a)s]ng%(consonant_end)s)|'
+    '(?:[jqx]i[%(o)s]ng%(consonant_end)s)|'
+    '(?:[nljqx]i[%(a)s]ng%(consonant_end)s)|'
+    '(?:(?:[zcs]h?|[dtnlgkhrjqxy])u[%(a)s]n%(consonant_end)s)|'
+    '(?:(?:[zcs]h|[gkh])u[%(a)s]i)|'
+    '(?:(?:[zc]h?|[rdtnlgkhsy])[%(o)s]ng%(consonant_end)s)|'
+    '(?:(?:[zcs]h?|[rbpmfdtnlgkhw])?[%(e)s]ng%(consonant_end)s)|'
+    '(?:(?:[zcs]h?|[rbpmfdtnlgkhwy])?[%(a)s]ng%(consonant_end)s)|'
+    '(?:[bpmdtnljqxy][%(i)s]ng%(consonant_end)s)|'
+    '(?:[bpmdtnljqx]i[%(a)s]n%(consonant_end)s)|'
+    '(?:[bpmdtnljqx]i[%(a)s]o)|'
+    '(?:[nl](?:v|u:|\u00FC)[%(e)s])|'
+    '(?:[nl](?:[%(v)s]|u:))|'
+    '(?:[jqxy]u[%(e)s])|'
+    '(?:[bpmnljqxy][%(i)s]n%(consonant_end)s)|'
+    '(?:[mdnljqx]i[%(u)s])|'
+    '(?:[bpmdtnljqx]i[%(e)s])|'
+    '(?:[dljqx]i[%(a)s])|'
+    '(?:(?:[zcs]h?|[rdtnlgkhxqjy])[%(u)s]n%(consonant_end)s)|'
+    '(?:(?:[zcs]h?|[rdtgkh])u[%(i)s])|'
+    '(?:(?:[zcs]h?|[rdtnlgkh])u[%(o)s])|'
+    '(?:(?:[zcs]h|[rgkh])u[%(a)s])|'
+    '(?:(?:[zcs]h?|[rbpmfdngkhw])?[%(e)s]n%(consonant_end)s)|'
+    '(?:(?:[zcs]h?|[rbpmfdtnlgkhwy])?[%(a)s]n%(consonant_end)s)|'
+    '(?:(?:[zcs]h?|[rpmfdtnlgkhy])?[%(o)s]u)|'
+    '(?:(?:[zcs]h?|[rbpmdtnlgkhy])?[%(a)s]o)|'
+    '(?:(?:[zs]h|[bpmfdtnlgkhwz])?[%(e)s]i)|'
+    '(?:(?:[zcs]h?|[bpmdtnlgkhw])?[%(a)s]i)|'
+    '(?:(?:[zcs]h?|[rjqxybpmdtnl])[%(i)s])|'
+    '(?:(?:[zcs]h?|[rwbpmfdtnlgkhjqxwy])[%(u)s])|'
+    '(?:(?:[zcs]h?|[rmdtnlgkhy])?[%(e)s])|'
+    '(?:[bpmfwyl]?[%(o)s])|'
+    '(?:(?:[zcs]h|[bpmfdtnlgkhzcswy])?[%(a)s])'
+    ')(?:r%(consonant_end)s)?[0-5]?'
+) % {
     'consonant_end': _consonant_end, 'a': _a, 'e': _e, 'i': _i,
     'o': _o, 'u': _u, 'v': _v
 }
 
-word = """
-    (?:%(as)s(?:-(?=%(as)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(as)s))?[0-9]*)+
-""" % {'as': syllable, 'a': _a, 'e': _e, 'o': _o}
+word = (
+    """(?:%(as)s(?:-(?=%(as)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(as)s))?[0-9]*)+"""
+) % {'as': syllable, 'a': _a, 'e': _e, 'o': _o}
 
-sent = sentence = """
-    (?:%(word)s|[%(non_stops)s\s])+[.!?]['"\]\}\)]*
-""" % {'word': word, 'non_stops': non_stops}
+sent = sentence = (
+    """(?:%(word)s|[%(non_stops)s\s])+[.!?]['"\]\}\)]*"""
+) % {'word': word, 'non_stops': non_stops}

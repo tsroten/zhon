@@ -61,7 +61,7 @@ VALID_SYLS = (
     'ㄐㄩㄣ', 'ㄑㄩㄣ', 'ㄒㄩㄣ', 'ㄩㄥ', 'ㄐㄩㄥ', 'ㄑㄩㄥ', 'ㄒㄩㄥ'
 )
 
-SYL = re.compile(zhuyin.syllable, re.X)
+SYL = re.compile(zhuyin.syllable)
 
 
 def create_syllable():
