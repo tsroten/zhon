@@ -9,23 +9,23 @@ Some simple examples:
 
 * Find Han characters in a string:
 
-    .. code:: python
+  .. code:: python
 
-        >>> re.findall('[%s]' % zhon.hanzi.characters, 'I broke a plate: 我打破了一个盘子.')
-        ['我', '打', '破', '了', '一', '个', '盘', '子']
+    >>> re.findall('[%s]' % zhon.hanzi.characters, 'I broke a plate: 我打破了一个盘子.')
+    ['我', '打', '破', '了', '一', '个', '盘', '子']
 
 * Validate Pinyin syllables, words, or sentences:
 
-    .. code:: python
+  .. code:: python
 
-        >>> re.findall(zhon.pinyin.syllable, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
-        ['Yuàn', 'zi', 'lǐ', 'tíng', 'zhe', 'yí', 'liàng', 'chē']
+    >>> re.findall(zhon.pinyin.syllable, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
+    ['Yuàn', 'zi', 'lǐ', 'tíng', 'zhe', 'yí', 'liàng', 'chē']
 
-        >>> re.findall(zhon.pinyin.word, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
-        ['Yuànzi', 'lǐ', 'tíngzhe', 'yí', 'liàng', 'chē']
+    >>> re.findall(zhon.pinyin.word, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
+    ['Yuànzi', 'lǐ', 'tíngzhe', 'yí', 'liàng', 'chē']
 
-        >>> re.findall(zhon.pinyin.sentence, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
-        ['Yuànzi lǐ tíngzhe yí liàng chē.']
+    >>> re.findall(zhon.pinyin.sentence, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
+    ['Yuànzi lǐ tíngzhe yí liàng chē.']
 
 Overview
 --------
