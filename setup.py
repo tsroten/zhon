@@ -13,7 +13,7 @@ with enc_open('README.rst', 'r', encoding='utf-8') as f:
 
 setup(
     name='zhon',
-    version='0.2.1',
+    version='1.0',
     author='Thomas Roten',
     author_email='thomas@roten.us',
     url='https://github.com/tsroten/zhon',
@@ -29,14 +29,11 @@ setup(
         'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.1',
-        'Programming Language :: Python :: 3.2',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Text Processing :: Linguistic',
     ],
     platforms='Any',
+    test_suite='tests',
 )

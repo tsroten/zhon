@@ -22,3 +22,9 @@ v0.2.1 (2013-05-07)
 -------------------
 
 * Fixes typo in README.rst.
+
+v.1.0.0 (2014-01-25)
+--------------------
+
+* Complete rewrite that refactors code, renames constants, and improves Pinyin
+  support.
