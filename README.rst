@@ -2,91 +2,174 @@ Zhon
 ====
 
 Zhon is a Python module that provides constants commonly used in Chinese text
-processing:
+processing. Current support includes Han characters and radicals, Pinyin, Zhuyin,
+and CC-CEDICT characters.
 
-* Chinese characters
-* Chinese punctuation
-* Pinyin and Zhuyin characters
-* Traditional and simplified characters
-* Chinese radicals (as used in dictionaries)
+Some simple examples:
 
-Zhon's constants are formatted as strings containing Unicode code ranges. This is
-useful for compiling `RE pattern objects <http://docs.python.org/3/library/re.html#regular-expression-objects>`_. They can be combined to
-make RE pattern objects as needed.
-
-Finding Chinese characters in a string:
+* Find Han characters in a string:
 
 .. code:: python
 
-    >>> re.findall('[%s]' % zhon.unicode.HAN_IDEOGRAPHS, 'Hello = 你好')
-    ['你', '好']
+    >>> re.findall('[%s]' % zhon.hanzi.characters, 'I broke a plate: 我打破了一个盘子.')
+    ['我', '打', '破', '了', '一', '个', '盘', '子']
 
-Splitting Chinese text on punctuation:
-
-.. code:: python
-
-    >>> re.split('[%s]' % zhon.unicode.PUNCTUATION, '有人丢失了一把斧子，怎么找也没有找到。')
-    ['有人丢失了一把斧子', '怎么找也没有找到', '']
-
-Finding all non-Chinese characters in a string:
+* Validate Pinyin syllables, words, or sentences:
 
 .. code:: python
 
-    >>> not_zh_re = re.compile('[^%s%s]' % (zhon.unicode.HAN_IDEOGRAPHS, zhon.unicode.PUNCTUATION))
-    >>> not_zh_re.findall('我叫Thomas。你叫什么名字？')
-    ['T', 'h', 'o', 'm', 'a', 's']
-
-RE pattern objects for matching Pinyin:
+    >>> re.findall(zhon.pinyin.syllable, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
+    ['Yuàn', 'zi', 'lǐ', 'tíng', 'zhe', 'yí', 'liàng', 'chē']
 
 .. code:: python
 
-    >>> pinyin_a_re = re.compile(zhon.unicode.pinyin.RE_ACCENT, re.I | re.X)
-    >>> pinyin_a_re.findall('Yǒurén diūshīle yī bǎ fǔzi, zěnme zhǎo yě méiyǒu zhǎodào.')
-    ['Yǒu', 'rén', ' ', 'diū', 'shī', 'le', ' ', 'yī', ' ', 'bǎ', ' ', 'fǔ', 'zi', ',', ' ', 'zěn', 'me', ' ', 'zhǎo', ' ', 'yě', ' ', 'méi', 'yǒu', ' ', 'zhǎo', 'dào', '.']
+    >>> re.findall(zhon.pinyin.word, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
+    ['Yuànzi', 'lǐ', 'tíngzhe', 'yí', 'liàng', 'chē']
+
+.. code:: python
+
+    >>> re.findall(zhon.pinyin.sentence, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
+    ['Yuànzi lǐ tíngzhe yí liàng chē.']
 
 Overview
 --------
 
-zhon.unicode.HAN_IDEOGRAPHS
-    This represents every Chinese character (including historic and rare
-    characters). HAN_IDEOGRAPHS includes CJK Unified Ideographs, CJK Unified
-    Extensions (A-D), CJK Compatibility Ideographs, CJK Compatibility
-    Ideographs Supplement, and the extension to the URO. More information is
-    available in `Chapter 12 of the Unicode Standard <http://www.unicode.org/versions/Unicode6.0.0/ch12.pdf>`_.
+Zhon's constants are in one of three formats:
 
-zhon.unicode.PUNCTUATION
-    This contains punctuation used in Chinese text.
+* Character ranges. These are used to build regular expression patterns.
+  For example, ``'u\0041-\u005A\u0061-\u007A'``.
+* Regular expression pattern. These are regular expression patterns
+  that can be used with the regular expression library directly. For
+  example, ``'[u\0020-\u007E]+'``.
+* Characters listed individually. These can be used with membership tests
+  or used to build regular expression patterns. For example, ``'aeiou'``.
 
-zhon.unicode.PINYIN
-    This contains characters used in Pinyin (both numbered and accented). This
-    can be used to quickly verify text as only having Pinyin-compatible
-    characters. It does not check for invalid syllables or spelling -- it only
-    contains individual characters.
+``zhon.hanzi.characters``
+    This includes character code ranges for all Han ideographs. More
+    information is available in
+    `Chapter 12 of the Unicode Standard <http://www.unicode.org/versions/Unicode6.0.0/ch12.pdf>`_.
+    *Constant format: character ranges*
 
-zhon.unicode.ZHUYIN
-    This contains characters used in Zhuyin (Bopomofo).
-
-zhon.unicode.RADICALS
+``zhon.hanzi.radicals``
     This contains the `Kangxi radicals
     <http://www.unicode.org/charts/PDF/U2F00.pdf>`_ and the `CJK Radicals
     Supplement <http://www.unicode.org/charts/PDF/U2E80.pdf>`_. They are used
-    in dictionaries to index characters.
+    in dictionaries to index characters. *Constant format: character ranges.*
 
-zhon.pinyin.RE_NUMBER
-    This is a regular expression pattern (not compiled) that matches valid
-    Pinyin (with numbers). It also matches punctuation and whitespace.
-    When compiling, make sure to use the re.X and re.I flags.
+``zhon.hanzi.punctuation``
+    Character code ranges for Chinese punctuation.
+    *Constant format: character ranges*
 
-zhon.pinyin.RE_ACCENT
-    This is a regular expression pattern (not compiled) that matches valid
-    Pinyin (with accents). It also matches punctuation and whitespace.
-    When compiling, make sure to use the re.X and re.I flags.
+``zhon.hanzi.sentence``
+    A regular expression pattern that matches a Chinese sentence.
+    *Constant format: regular expression pattern*
 
-zhon.cedict.TRADITIONAL
-    This contains characters considered by CC-CEDICT to be traditional.
+    .. code:: python
 
-zhon.cedict.SIMPLIFIED
-    This contains characters considered by CC-CEDICT to be simplified.
+        >>> re.findall(zhon.hanzi.sentence, '我买了一辆车。')
+        ['我买了一辆车。']
+
+``zhon.pinyin.printable``
+    A string that includes every Pinyin printable character or punctuation
+    mark (including whitespace). This can be used as a whitelist for Pinyin text.
+    *Constant format: characters listed individually*
+
+``zhon.pinyin.syllable``
+    A regular expression pattern that matches a valid Pinyin syllable (accented or
+    numbered). Use with the ``re.I`` flag if you want to match uppercase
+    letters as well.
+    *Constant format: regular expression pattern*
+
+    .. code:: python
+
+        >>> re.findall(zhon.pinyin.syllable, 'Shū zài zhuōzi shàngmian.', re.I)
+        ['Shū', 'zài', 'zhuō', 'zi', 'shàng', 'mian']
+
+``zhon.pinyin.word``
+    A regular expression pattern that matches a valid Pinyin word (accented or
+    numbered). Use with the ``re.I`` flag if you want to match uppercase
+    letters as well.
+    *Constant format: regular expression pattern*
+
+    .. code:: python
+
+        >>> re.findall(zhon.pinyin.word, 'Shū zài zhuōzi shàngmian.', re.I)
+        ['Shū', 'zài', 'zhuōzi', 'shàngmian']
+
+``zhon.pinyin.sentence``
+    A regular expression pattern that matches a valid Pinyin sentence (accented or
+    numbered). Use with the ``re.I`` flag if you want to match uppercase
+    letters as well.
+    *Constant format: regular expression pattern*
+
+    .. code:: python
+
+        >>> re.findall(zhon.pinyin.sentence, 'Shū zài zhuōzi shàngmian.', re.I)
+        ['Shū zài zhuōzi shàngmian.']
+
+``zhon.zhuyin.syllable``
+    A regular expression pattern that matches a valid Zhuyin syllable.
+    *Constant format: regular expression pattern*
+
+    .. code:: python
+
+        >>> re.findall(zhon.zhuyin.syllable, 'ㄓㄨˋ ㄧㄣ ㄈㄨˊ ㄏㄠˋ')
+        ['ㄓㄨˋ', 'ㄧㄣ', 'ㄈㄨˊ', 'ㄏㄠˋ']
+
+``zhon.cedict.traditional``
+    A string containing characters considered by CC-CEDICT to be traditional.
+    *Constant format: characters listed individually*
+
+``zhon.cedict.simplified``
+    A string containing characters considered by CC-CEDICT to be simplified.
+    *Constant format: characters listed individually*
+
+Using Zhon's Constants
+----------------------
+
+Using the constants listed above is simple. For constants that list the
+characters individually, you can perform membership tests or use them in
+regular expressions:
+
+.. code:: python
+
+    >>> '车' in zhon.cedict.traditional
+    False
+
+    >>> # This regular expression finds all characters that aren't considered
+    ... # traditional in CC-CEDICT
+    ... re.findall('[^%s]' % zhon.cedict.traditional, '我买了一辆车')
+    ['买', '辆', '车']
+
+For constants that contain character code ranges, you'll want to build a
+regular expression:
+
+.. code:: python
+
+    >>> re.findall('[%s]' % zhon.hanzi.punctuation, '我买了一辆车。')
+    ['。']
+
+For constants that are regular expression patterns, you can use them directly
+with the regular expression library, without formatting them:
+
+.. code:: python
+
+    >>> re.findall(zhon.hanzi.sentence, '我买了一辆车。妈妈做的菜，很好吃！')
+    ['我买了一辆车。', '妈妈做的菜，很好吃！']
+
+Identifying Text as Chinese
+---------------------------
+
+Identifying a character, word, or sentence as Chinese is not a simple
+undertaking. Zhon's module hanzi includes Han ideographs, which are not the
+same thing as Chinese characters. Chapter 12 of The Unicode Standard has some
+useful information about this:
+
+    There is some concern that unifying the Han characters may lead to confusion because they are sometimes used differently by the various East Asian languages. Computationally, Han character unification presents no more difficulty than employing a single Latin character set that is used to write languages as different as English and French. Programmers do not expect the characters "c", "h", "a", and "t" alone to tell us whether chat is a French word for cat or an English word meaning “informal talk.” Likewise, we depend on context to identify the American hood (of a car) with the British bonnet. Few computer users are confused by the fact that ASCII can also be used to represent such words as the Welsh word ynghyd, which are strange looking to English eyes. Although it would be convenient to identify words by language for programs such as spell-checkers, it is neither practical nor productive to encode a separate Latin character set for every language that uses it.
+
+In other words, don't expect Zhon constants to identify a string as Chinese as
+opposed to Japanese or Korean. Zhon's ``hanzi.characters`` constant represents all
+Han characters, not Chinese characters.
 
 Name
 ----
