@@ -28,3 +28,16 @@ v.1.0.0 (2014-01-25)
 
 * Complete rewrite that refactors code, renames constants, and improves Pinyin
   support.
+
+v.1.1.0 (2014-01-28)
+--------------------
+
+* Adds ``zhon.pinyin.punctuation`` constant.
+* Adds ``zhon.pinyin.accented_syllable``, ``zhon.pinyin.accented_word``, and
+  ``zhon.pinyin.accented_sentence`` constants.
+* Adds ``zhon.pinyin.numbered_syllable``, ``zhon.pinyin.numbered_word``, and
+  ``zhon.pinyin.numbered_sentence`` constants.
+* Fixes some README.rst typos.
+* Clarifies information regarding Traditional and Simplified character
+  constants in README.rst.
+* Adds constant short names to README.rst.
