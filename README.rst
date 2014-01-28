@@ -70,7 +70,7 @@ Zhon's constants are in one of three formats:
     mark (including whitespace). This can be used as a whitelist for Pinyin text.
     *Constant format: characters listed individually*
 
-``zhon.pinyin.syllable``
+``zhon.pinyin.syllable`` or ``zhon.pinyin.syl``
     A regular expression pattern that matches a valid Pinyin syllable (accented or
     numbered). Use with the ``re.I`` flag if you want to match uppercase
     letters as well.
@@ -81,24 +81,24 @@ Zhon's constants are in one of three formats:
         >>> re.findall(zhon.pinyin.syllable, 'Shū zài zhuōzi shàngmian.', re.I)
         ['Shū', 'zài', 'zhuō', 'zi', 'shàng', 'mian']
 
-``zhon.pinyin.accented_syllable``
-    A regular expression pattern that matches a valid accented Pinyin syllable
+``zhon.pinyin.accented_syllable``, ``zhon.pinyin.acc_syl``, or ``zhon.pinyin.a_syl``
+    A regular expression pattern that matches a valid accented Pinyin syllable.
     Use with the ``re.I`` flag if you want to match uppercase letters as well.
     *Constant format: regular expression pattern*
 
     .. code:: python
 
-        >>> re.findall(zhon.pinyin.accented_syllable, 'Shū zài zhuōzi shàngmian.', re.I)
+        >>> re.findall(zhon.pinyin.acc_syl, 'Shū zài zhuōzi shàngmian.', re.I)
         ['Shū', 'zài', 'zhuō', 'zi', 'shàng', 'mian']
 
-``zhon.pinyin.numbered_syllable``
-    A regular expression pattern that matches a valid numbered Pinyin syllable
+``zhon.pinyin.numbered_syllable``, ``zhon.pinyin.num_syl``, or ``zhon.pinyin.n_syl``
+    A regular expression pattern that matches a valid numbered Pinyin syllable.
     Use with the ``re.I`` flag if you want to match uppercase letters as well.
     *Constant format: regular expression pattern*
 
     .. code:: python
 
-        >>> re.findall(zhon.pinyin.numbered_syllable, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.I)
+        >>> re.findall(zhon.pinyin.num_syl, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.I)
         ['Shu1', 'zai4', 'zhuo1', 'zi5', 'shang4', 'mian5']
 
 ``zhon.pinyin.word``
@@ -112,27 +112,27 @@ Zhon's constants are in one of three formats:
         >>> re.findall(zhon.pinyin.word, 'Shū zài zhuōzi shàngmian.', re.I)
         ['Shū', 'zài', 'zhuōzi', 'shàngmian']
 
-``zhon.pinyin.accented_word``
-    A regular expression pattern that matches a valid accented Pinyin word
+``zhon.pinyin.accented_word``, ``zhon.pinyin.acc_word``, or ``zhon.pinyin.a_word``
+    A regular expression pattern that matches a valid accented Pinyin word.
     Use with the ``re.I`` flag if you want to match uppercase letters as well.
     *Constant format: regular expression pattern*
 
     .. code:: python
 
-        >>> re.findall(zhon.pinyin.accented_word, 'Shū zài zhuōzi shàngmian.', re.I)
+        >>> re.findall(zhon.pinyin.acc_word, 'Shū zài zhuōzi shàngmian.', re.I)
         ['Shū', 'zài', 'zhuōzi', 'shàngmian']
 
-``zhon.pinyin.numbered_word``
-    A regular expression pattern that matches a valid numbered Pinyin word
+``zhon.pinyin.numbered_word``, ``zhon.pinyin.num_word``, or ``zhon.pinyin.n_word``
+    A regular expression pattern that matches a valid numbered Pinyin word.
     Use with the ``re.I`` flag if you want to match uppercase letters as well.
     *Constant format: regular expression pattern*
 
     .. code:: python
 
-        >>> re.findall(zhon.pinyin.accented_word, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.I)
+        >>> re.findall(zhon.pinyin.num_word, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.I)
         ['Shu1', 'zai4', 'zhuo1zi5', 'shang4mian5']
 
-``zhon.pinyin.sentence``
+``zhon.pinyin.sentence`` or ``zhon.pinyin.sent``
     A regular expression pattern that matches a valid Pinyin sentence (accented or
     numbered). Use with the ``re.I`` flag if you want to match uppercase
     letters as well.
@@ -143,24 +143,24 @@ Zhon's constants are in one of three formats:
         >>> re.findall(zhon.pinyin.sentence, 'Shū zài zhuōzi shàngmian.', re.I)
         ['Shū zài zhuōzi shàngmian.']
 
-``zhon.pinyin.accented_sentence``
-    A regular expression pattern that matches a valid accented Pinyin sentence
+``zhon.pinyin.accented_sentence``, ``zhon.pinyin.acc_sent``, or ``zhon.pinyin.a_sent``
+    A regular expression pattern that matches a valid accented Pinyin sentence.
     Use with the ``re.I`` flag if you want to match uppercase letters as well.
     *Constant format: regular expression pattern*
 
     .. code:: python
 
-        >>> re.findall(zhon.pinyin.accented_sentence, 'Shū zài zhuōzi shàngmian.', re.I)
+        >>> re.findall(zhon.pinyin.acc_sent, 'Shū zài zhuōzi shàngmian.', re.I)
         ['Shū zài zhuōzi shàngmian.']
 
-``zhon.pinyin.numbered_sentence``
-    A regular expression pattern that matches a valid numbered Pinyin sentence
+``zhon.pinyin.numbered_sentence``, ``zhon.pinyin.num_sent``, or  ``zhon.pinyin.n_sent``
+    A regular expression pattern that matches a valid numbered Pinyin sentence.
     Use with the ``re.I`` flag if you want to match uppercase letters as well.
     *Constant format: regular expression pattern*
 
     .. code:: python
 
-        >>> re.findall(zhon.pinyin.numbered_sentence, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.I)
+        >>> re.findall(zhon.pinyin.num_sent, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.I)
         ['Shu1 zai4 zhuo1zi5 shang4mian5.']
 
 ``zhon.zhuyin.syllable``
