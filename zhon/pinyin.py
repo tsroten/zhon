@@ -1,18 +1,16 @@
 # -*- coding: utf-8 -*-
-"""RE pattern objects for detecting and splitting Pinyin.
+"""Constants for processing Pinyin strings.
 
 Splitting pinyin into syllables is not as simple as looking for the maximum
-length matches using valid syllables. Instead, lookahead/lookbehind assertions
-must be used to validate possible matches. For syllables, the rough approach
-used is:
-    * Get the longest valid syllable.
-    * If it ends in a consonant make sure it's not followed directly by a
+length matches using valid syllables. Instead, lookahead assertions must be
+used to validate possible matches. For syllables, the rough approach used is:
+    1. Get the longest valid syllable.
+    2. If it ends in a consonant make sure it's not followed directly by a
         vowel (a hyphen or apostrophe doesn't count).
-    * If the above didn't match, repeat for the next longest valid match.
+    3. If the above didn't match, repeat for the next longest valid match.
 
-Lookahead/lookbehind assertions are used to ensure that hyphens and
-apostrophes are only included in words if used correctly. This helps to weed
-out non-Pinyin strings.
+Lookahead assertions are used to ensure that hyphens and apostrophes are only
+considered valid if used correctly. This helps to weed out non-Pinyin strings.
 
 """
 
@@ -20,6 +18,7 @@ from __future__ import unicode_literals
 from string import whitespace
 
 
+#: A string containing every Pinyin vowel (lowercase and uppercase).
 vowels = (
     'aɑeiouüvAEIOUÜV'
     'āɑ̄ēīōūǖĀĒĪŌŪǕ'
@@ -27,11 +26,28 @@ vowels = (
     'ǎɑ̌ěǐǒǔǚǍĚǏǑǓǙ'
     'àɑ̀èìòùǜÀÈÌÒÙǛ'
 )
+
+#: A string containing every Pinyin consonant (lowercase and uppercase).
 consonants = 'bpmfdtnlgkhjqxzcsrzcswyBPMFDTNLGKHJQXZCSRZCSWY'
+
+#: A string containing all Pinyin marks that have special meaning:
+#: middle dot and numbers for tones, colon for easily writing \u00FC ('u:'),
+#: hyphen for connecting syllables within words, and apostrophe for
+#: separating a syllable beginning with a vowel from the previous syllable
+#: in its word. All of these marks can be used within a valid Pinyin word.
 marks = "·012345:-'"
+
+#: A string containing valid punctuation marks that are not stops.
 non_stops = """"#$%&'()*+,-/:;<=>@[\]^_`{|}~"""
+
+#: A string containing valid stop punctuation marks.
 stops = '.!?'
+
+#: A string containing all punctuation marks.
 punctuation = non_stops + stops
+
+#: A string containing all printable Pinyin characters, marks, punctuation,
+#: and whitespace.
 printable = vowels + consonants + marks[:-3] + whitespace + punctuation
 
 _a = 'a\u0101\u00E0\u00E1\u01CE'
@@ -132,14 +148,31 @@ def _build_sentence(word):
     ) % {'word': word, 'non_stops': non_stops, 'stops': stops}
 
 
+#: A regular expression pattern for a valid accented Pinyin syllable.
 a_syl = acc_syl = accented_syllable = _build_syl(_a_vowels, tone_numbers=False)
+
+#: A regular expression pattern for a valid numbered Pinyin syllable.
 n_syl = num_syl = numbered_syllable = _build_syl(_n_vowels, tone_numbers=True)
+
+#: A regular expression pattern for a valid Pinyin syllable.
 syl = syllable = _build_syl(_a_vowels, tone_numbers=True)
 
+
+#: A regular expression pattern for a valid accented Pinyin word.
 a_word = acc_word = accented_word = _build_word(a_syl, _a_vowels)
+
+#: A regular expression pattern for a valid numbered Pinyin word.
 n_word = num_word = numbered_word = _build_word(n_syl, _n_vowels)
+
+#: A regular expression pattern for a valid Pinyin word.
 word = _build_word(syl, _a_vowels)
 
+
+#: A regular expression pattern for a valid accented Pinyin sentence.
 a_sent = acc_sent = accented_sentence = _build_sentence(a_word)
+
+#: A regular expression pattern for a valid numbered Pinyin sentence.
 n_sent = num_sent = numbered_sentence = _build_sentence(n_word)
+
+#: A regular expression pattern for a valid Pinyin sentence.
 sent = sentence = _build_sentence(word)
