@@ -193,7 +193,7 @@ regular expressions:
     False
 
     >>> # This regular expression finds all characters that aren't considered
-    ... # traditional in CC-CEDICT
+    ... # traditional according to CC-CEDICT
     ... re.findall('[^%s]' % zhon.cedict.traditional, '我买了一辆车')
     ['买', '辆', '车']
 
