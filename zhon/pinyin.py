@@ -99,7 +99,7 @@ def _build_syl(vowels, tone_numbers=False):
 
 def _build_word(syl, vowels):
     return (
-        "(?:%(syl)s(?:-(?=%(syl)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(syl)s))?[0-9]*)+"
+        "(?:%(syl)s(?:-(?=%(syl)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(syl)s))?)+"
     ) % {'syl': syl, 'a': vowels['a'], 'e': vowels['e'], 'o': vowels['o']}
 
 
