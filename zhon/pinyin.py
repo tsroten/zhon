@@ -20,15 +20,18 @@ from string import whitespace
 
 #: A string containing every Pinyin vowel (lowercase and uppercase).
 vowels = (
-    'aɑeiouüvAEIOUÜV'
-    'āɑ̄ēīōūǖĀĒĪŌŪǕ'
-    'áɑ́éíóúǘÁÉÍÓÚǗ'
-    'ǎɑ̌ěǐǒǔǚǍĚǏǑǓǙ'
-    'àɑ̀èìòùǜÀÈÌÒÙǛ'
+    'aɑeiouüvāɑ̄ēīōūǖáɑ́éíóúǘǎɑ̌ěǐǒǔǚàɑ̀èìòùǜ'
+    'AEIOUÜVĀĒĪŌŪǕÁÉÍÓÚǗǍĚǏǑǓǙÀÈÌÒÙǛ'
 )
 
 #: A string containing every Pinyin consonant (lowercase and uppercase).
 consonants = 'bpmfdtnlgkhjqxzcsrzcswyBPMFDTNLGKHJQXZCSRZCSWY'
+
+#: A string containing every lowercase Pinyin character.
+lowercase = consonants[:consonants.index('B')] + vowels[:vowels.index('A')]
+
+#: A string containing every uppercase Pinyin character.
+uppercase = consonants[consonants.index('B'):] + vowels[vowels.index('A'):]
 
 #: A string containing all Pinyin marks that have special meaning:
 #: middle dot and numbers for tones, colon for easily writing \u00FC ('u:'),
