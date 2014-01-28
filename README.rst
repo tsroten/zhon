@@ -1,7 +1,7 @@
 Zhon
 ====
 
-Zhon is a Python module that provides constants commonly used in Chinese text
+Zhon is a Python package that provides constants commonly used in Chinese text
 processing. Current support includes Han characters and radicals, Pinyin, Zhuyin,
 and CC-CEDICT characters.
 
