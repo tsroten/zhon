@@ -173,11 +173,17 @@ Zhon's constants are in one of three formats:
         ['ㄓㄨˋ', 'ㄧㄣ', 'ㄈㄨˊ', 'ㄏㄠˋ']
 
 ``zhon.cedict.traditional``
-    A string containing characters considered by CC-CEDICT to be traditional.
+    A string containing characters considered by CC-CEDICT to be Traditional
+    Chinese characters. Some of these characters are also present in
+    ``zhon.cedict.simplified`` because many characters were left untouched by
+    the simplification process.
     *Constant format: characters listed individually*
 
 ``zhon.cedict.simplified``
-    A string containing characters considered by CC-CEDICT to be simplified.
+    A string containing characters considered by CC-CEDICT to be Simplified
+    Chinese characters. Some of these characters are also present in
+    ``zhon.cedict.traditional`` because many characters were left untouched by
+    the simplification process.
     *Constant format: characters listed individually*
 
 Using Zhon's Constants
