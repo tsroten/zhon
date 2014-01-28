@@ -31,7 +31,8 @@ consonants = 'bpmfdtnlgkhjqxzcsrzcswyBPMFDTNLGKHJQXZCSRZCSWY'
 marks = "·012345:-'"
 non_stops = """"#$%&'()*+,-/:;<=>@[\]^_`{|}~"""
 stops = '.!?'
-printable = vowels + consonants + marks[:-3] + whitespace + stops + non_stops
+punctuation = non_stops + stops
+printable = vowels + consonants + marks[:-3] + whitespace + punctuation
 
 _a = 'a\u0101\u00E0\u00E1\u01CE'
 _e = 'e\u0113\u00E9\u011B\u00E8'
