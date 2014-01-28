@@ -2,5 +2,11 @@
 
 from __future__ import unicode_literals
 
-from .simplified import CHARACTERS as simplified
-from .traditional import CHARACTERS as traditional
+from . import simplified
+from . import traditional
+
+#: A string containing all Simplified characters according to CC-CEDICT.
+simp = simplified = simplified.CHARACTERS
+
+#: A string containing all Traditional characters according to CC-CEDICT.
+trad = traditional = traditional.CHARACTERS

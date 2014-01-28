@@ -143,7 +143,7 @@ def _build_sentence(word):
 
     A sentence is defined as a series of valid Pinyin words, punctuation
     (non-stops), and spaces followed by a single stop and zero or more
-    end-container punctuation marks.
+    container-closing punctuation marks (e.g. apostrophe and brackets).
 
     """
     return (

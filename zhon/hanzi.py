@@ -4,6 +4,7 @@
 from __future__ import unicode_literals
 import sys
 
+#: Character code ranges for all Han ideographs.
 characters = (
     '\u4E00-\u9FFF'  # CJK Unified Ideographs
     '\u3400-\u4DBF'  # CJK Unified Ideographs Extension A
@@ -18,11 +19,13 @@ if sys.maxunicode > 0xFFFF:
         '\U0002F800-\U0002FA1F'  # CJK Compatibility Ideographs Supplement
     )
 
+#: Character code ranges for the Kangxi radicals and CJK Radicals Supplement.
 radicals = (
     '\u2F00-\u2FD5'  # Kangxi Radicals
     '\u2E80-\u2EF3'  # CJK Radicals Supplement
 )
 
+#: Character code ranges for Chinese punctuation marks (non-stops).
 non_stops = (
     '\uFF02-\uFF0D'                   # Fullwidth ASCII variants
     '\uFF0F'                          # Fullwidth ASCII variants
@@ -44,6 +47,7 @@ non_stops = (
     '\uFE4F'                          # Overscores and underscores
 )
 
+#: A string of Chinese stops.
 stops = (
     '\uFF01'  # Fullwidth exclamation mark
     '\uFF1F'  # Fullwidth question mark
@@ -51,12 +55,17 @@ stops = (
     '\u3002'  # Ideographic full stop
 )
 
+#: Character code ranges for all Chinese punctuation.
 punctuation = non_stops + stops
 
 # A sentence end is defined by a stop followed by zero or more
 # container-closing marks (e.g. quotation or brackets).
 _sentence_end = '[%(stops)s][」﹂”』’》）］｝〕〗〙〛〉】]*' % {'stops': stops}
 
+#: A regular expression pattern for a Chinese sentence. A sentence is defined
+#: as a series of characters and non-stop punctuation marks followed by a stop
+#: and zero or more container-closing punctuation marks (e.g. apostrophe or
+# brackets).
 sentence = '[%(characters)s%(radicals)s%(non_stops)s]*%(sentence_end)s' \
     % {'characters': characters, 'radicals': radicals, 'non_stops': non_stops,
         'sentence_end': _sentence_end}

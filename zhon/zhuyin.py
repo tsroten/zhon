@@ -4,13 +4,13 @@
 from __future__ import unicode_literals
 
 
-# Zhuyin consists of \u3105-\u3129.
+#: A string containing all Zhuyin characters.
 characters = (
     'ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙ'
     'ㄚㄛㄝㄜㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧ'
 )
 
-
+#: A string containing all Zhuyin tone marks.
 marks = (
     '\u02C7'  # Caron
     '\u02CA'  # Modifier letter accute accent
@@ -18,6 +18,7 @@ marks = (
     '\u02D9'  # Dot above
 )
 
+#: A regular expression pattern for a Zhuyin syllable.
 syl = syllable = (
     '(?:'
     '[ㄇㄉㄊㄋㄌㄍㄎㄏㄓㄔㄕㄖㄗㄘㄙ]?ㄜ|'
