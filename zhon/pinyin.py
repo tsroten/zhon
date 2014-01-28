@@ -45,6 +45,13 @@ _n_vowels = {'a': 'a', 'e': 'e', 'i': 'i', 'o': 'o', 'u': 'u', 'v': 'v\u00FC'}
 
 
 def _build_syl(vowels, tone_numbers=False):
+    """Builds a Pinyin syllable re pattern.
+
+    Syllables can be preceded by a middle dot (tone mark). Syllables that end
+    in a consonant are only valid if they aren't followed directly by a vowel
+    with no apostrophe in between.
+
+    """
     # This is the end-of-syllable-consonant lookahead assertion.
     consonant_end = '(?![%(a)s%(e)s%(i)s%(o)s%(u)s%(v)s]|u:)' % {
         'a': _a, 'e': _e, 'i': _i, 'o': _o, 'u': _u, 'v': _v
@@ -98,12 +105,28 @@ def _build_syl(vowels, tone_numbers=False):
 
 
 def _build_word(syl, vowels):
+    """Builds a Pinyin word re pattern from a Pinyin syllable re pattern.
+
+    A word is defined as a series of consecutive valid Pinyin syllables
+    with optional hyphens and apostrophes interspersed. Hyphens must be
+    followed immediately by another valid Pinyin syllable. Apostrophes must be
+    followed by another valid Pinyin syllable that starts with an 'a', 'e', or
+    'o'.
+
+    """
     return (
         "(?:%(syl)s(?:-(?=%(syl)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(syl)s))?)+"
     ) % {'syl': syl, 'a': vowels['a'], 'e': vowels['e'], 'o': vowels['o']}
 
 
 def _build_sentence(word):
+    """Builds a Pinyin sentence re pattern from a Pinyin word re pattern.
+
+    A sentence is defined as a series of valid Pinyin words, punctuation
+    (non-stops), and spaces followed by a single stop and zero or more
+    end-container punctuation marks.
+
+    """
     return (
         """(?:%(word)s|[%(non_stops)s\s])+[%(stops)s]['"\]\}\)]*"""
     ) % {'word': word, 'non_stops': non_stops, 'stops': stops}
