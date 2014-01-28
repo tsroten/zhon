@@ -61,8 +61,14 @@ VALID_SYLS = (  # 411 total syllables, including 'r'
 )
 
 SYL = re.compile(pinyin.syllable)
+A_SYL = re.compile(pinyin.a_syl)
+N_SYL = re.compile(pinyin.n_syl)
 WORD = re.compile(pinyin.word)
+N_WORD = re.compile(pinyin.n_word)
+A_WORD = re.compile(pinyin.a_word)
 SENT = re.compile(pinyin.sentence)
+N_SENT = re.compile(pinyin.n_sent)
+A_SENT = re.compile(pinyin.a_sent)
 
 
 VOWELS = 'aeiou\u00FC'
@@ -124,6 +130,7 @@ class TestPinyinSyllables(unittest.TestCase):
                 _vs[n] = "'%s" % _vs[n]
         s = ''.join(_vs)
         self.assertEqual(SYL.findall(s), vs)
+        self.assertEqual(N_SYL.findall(s), vs)
 
     def test_accent_syllables(self):
         vs = list(VALID_SYLS)
@@ -136,6 +143,7 @@ class TestPinyinSyllables(unittest.TestCase):
                 _vs[n] = "'%s" % _vs[n]
         s = ''.join(_vs)
         self.assertEqual(SYL.findall(s), vs)
+        self.assertEqual(A_SYL.findall(s), vs)
 
 
 def create_word(accented=False):
@@ -160,11 +168,13 @@ class TestPinyinWords(unittest.TestCase):
         for n in range(0, NUM_WORDS):
             word = create_word()
             self.assertEqual(WORD.match(word).group(0), word)
+            self.assertEqual(N_WORD.match(word).group(0), word)
 
     def test_accent_words(self):
         for n in range(0, NUM_WORDS):
             word = create_word(accented=True)
             self.assertEqual(WORD.match(word).group(0), word)
+            self.assertEqual(A_WORD.match(word).group(0), word)
 
 
 def create_sentence(accented=False):
@@ -182,8 +192,10 @@ class TestPinyinSentences(unittest.TestCase):
         for n in range(0, NUM_SENT):
             sentence = create_sentence()
             self.assertEqual(SENT.match(sentence).group(0), sentence)
+            self.assertEqual(N_SENT.match(sentence).group(0), sentence)
 
     def test_accent_sentences(self):
         for n in range(0, NUM_SENT):
             sentence = create_sentence(accented=True)
             self.assertEqual(SENT.match(sentence).group(0), sentence)
+            self.assertEqual(A_SENT.match(sentence).group(0), sentence)
