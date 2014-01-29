@@ -35,6 +35,12 @@ Some quick examples:
     >>> re.findall(zhon.pinyin.sentence, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
     ['Yuànzi lǐ tíngzhe yí liàng chē.']
 
+Documentation
+-------------
+
+Zhon has `complete documentation <http://zhon.readthedocs.org/en/latest/>`_.
+Check it out if you want to find out how to use Zhon.
+
 Name
 ----
 
