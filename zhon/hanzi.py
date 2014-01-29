@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 import sys
 
 #: Character code ranges for all Han ideographs.
-characters = (
+characters = han_ideographs = (
     '\u4E00-\u9FFF'  # CJK Unified Ideographs
     '\u3400-\u4DBF'  # CJK Unified Ideographs Extension A
     '\uF900-\uFAFF'  # CJK Compatibility Ideographs
