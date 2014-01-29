@@ -1,9 +1,10 @@
-"""Provides CC-CEDICT Traditional and Simplified character constants."""
+"""Provides CC-CEDICT character constants."""
 
 from __future__ import unicode_literals
 
 from . import simplified
 from . import traditional
+from . import all
 
 #: A string containing all Simplified characters according to CC-CEDICT.
 simp = simplified = simplified.CHARACTERS
