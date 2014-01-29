@@ -5,20 +5,29 @@ from __future__ import unicode_literals
 from string import whitespace
 
 
+_a = 'a\u0101\u00E0\u00E1\u01CE'
+_e = 'e\u0113\u00E9\u011B\u00E8'
+_i = 'i\u012B\u00ED\u01D0\u00EC'
+_o = 'o\u014D\u00F3\u01D2\u00F2'
+_u = 'u\u016B\u00FA\u01D4\u00F9'
+_v = 'v\u00FC\u01D6\u01D8\u01DA\u01DC'
+
+_lowercase_vowels = _a + _e + _i + _o + _u + _v[1:]
+_uppercase_vowels = _lowercase_vowels.upper()
+_lowercase_consonants = 'bpmfdtnlgkhjqxzcsrzcswy'
+_uppercase_consonants = _lowercase_consonants.upper()
+
 #: A string containing every Pinyin vowel (lowercase and uppercase).
-vowels = (
-    'aeiouüāēīōūǖáéíóúǘǎěǐǒǔǚàèìòùǜ'
-    'AEIOUÜĀĒĪŌŪǕÁÉÍÓÚǗǍĚǏǑǓǙÀÈÌÒÙǛ'
-)
+vowels = _lowercase_vowels + _uppercase_vowels
 
 #: A string containing every Pinyin consonant (lowercase and uppercase).
-consonants = 'bpmfdtnlgkhjqxzcsrzcswyBPMFDTNLGKHJQXZCSRZCSWY'
+consonants = _lowercase_consonants + _uppercase_consonants
 
 #: A string containing every lowercase Pinyin character.
-lowercase = consonants[:consonants.index('B')] + vowels[:vowels.index('A')]
+lowercase = _lowercase_consonants + _lowercase_vowels
 
 #: A string containing every uppercase Pinyin character.
-uppercase = consonants[consonants.index('B'):] + vowels[vowels.index('A'):]
+uppercase = _uppercase_consonants + _uppercase_vowels
 
 #: A string containing all Pinyin marks that have special meaning:
 #: middle dot and numbers for tones, colon for easily writing \u00FC ('u:'),
@@ -40,12 +49,6 @@ punctuation = non_stops + stops
 #: and whitespace.
 printable = vowels + consonants + marks[:-3] + whitespace + punctuation
 
-_a = 'a\u0101\u00E0\u00E1\u01CE'
-_e = 'e\u0113\u00E9\u011B\u00E8'
-_i = 'i\u012B\u00ED\u01D0\u00EC'
-_o = 'o\u014D\u00F3\u01D2\u00F2'
-_u = 'u\u016B\u00FA\u01D4\u00F9'
-_v = 'v\u00FC\u01D6\u01D8\u01DA\u01DC'
 _a_vowels = {'a': _a, 'e': _e, 'i': _i, 'o': _o, 'u': _u, 'v': _v}
 _n_vowels = {'a': 'a', 'e': 'e', 'i': 'i', 'o': 'o', 'u': 'u', 'v': 'v\u00FC'}
 
