@@ -25,26 +25,42 @@ radicals = (
     '\u2E80-\u2EF3'  # CJK Radicals Supplement
 )
 
-#: Character code ranges for Chinese punctuation marks (non-stops).
+#: A string containing Chinese punctuation marks (non-stops).
 non_stops = (
-    '\uFF02-\uFF0D'                   # Fullwidth ASCII variants
-    '\uFF0F'                          # Fullwidth ASCII variants
-    '\uFF1A-\uFF1E'                   # Fullwidth ASCII variants
-    '\uFF20'                          # Fullwidth ASCII variants
-    '\uFF3B-\uFF40'                   # Fullwidth ASCII variants
-    '\uFF5B-\uFF60'                   # Fullwidth ASCII variants
-    '\uFF62-\uFF64'                   # Halfwidth CJK punctuation
-    '\u3000-\u3001'                   # CJK symbols and punctuation
-    '\u3003'                          # CJK symbols and punctutaion
-    '\u3008-\u3011'                   # CJK angle and corner brackets
-    '\u3014-\u301F'                   # CJK brackets and symbols/punctuation
-    '\u3030'                          # Other CJK symbols
-    '\u303E-\u303F'                   # Special CJK indicators
-    '\u2013-\u2014'                   # Dashes
-    '\u2018-\u2019'                   # Quotation marks and apostrophe
-    '\u201B-\u201F'                   # Quotation marks and apostrophe
-    '\u2026-\u2027'                   # General punctuation
-    '\uFE4F'                          # Overscores and underscores
+    # Fullwidth ASCII variants
+    '\uFF02\uFF03\uFF04\uFF05\uFF06\uFF07\uFF08\uFF09\uFF0A\uFF0B\uFF0C\uFF0D'
+    '\uFF0F\uFF1A\uFF1B\uFF1C\uFF1D\uFF1E\uFF20\uFF3B\uFF3C\uFF3D\uFF3E\uFF3F'
+    '\uFF40\uFF5B\uFF5C\uFF5D\uFF5E\uFF5F\uFF60'
+
+    # Halfwidth CJK punctuation
+    '\uFF62\uFF63\uFF64'
+
+    # CJK symbols and punctuation
+    '\u3000\u3001\u3003'
+
+    # CJK angle and corner brackets
+    '\u300B\u300C\u300D\u300E\u300F\u3010\u3011'
+
+    # CJK brackets and symbols/punctuation
+    '\u3014\u3015\u3016\u3017\u3018\u3019\u301A\u301B\u301C\u301D\u301E\u301F'
+
+    # Other CJK symbols
+    '\u3030'
+
+    # Special CJK indicators
+    '\u303E\u303F'
+
+    # Dashes
+    '\u2013\u2014'
+
+    # Quotation marks and apostrophe
+    '\u2018\u2019\u201B\u201C\u201D\u201E\u201F'
+
+    # General punctuation
+    '\u2026\u2027'
+
+    # Overscores and underscores
+    '\uFE4F'
 )
 
 #: A string of Chinese stops.
@@ -55,7 +71,7 @@ stops = (
     '\u3002'  # Ideographic full stop
 )
 
-#: Character code ranges for all Chinese punctuation.
+#: A string containing all Chinese punctuation.
 punctuation = non_stops + stops
 
 # A sentence end is defined by a stop followed by zero or more
