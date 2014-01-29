@@ -4,12 +4,11 @@
 from __future__ import unicode_literals
 import sys
 
-#: Character code ranges for all Han ideographs.
-characters = han_ideographs = (
+#: Character code ranges for pertinent CJK ideograph Unicode blocks.
+characters = cjk_ideographs = (
     '\u4E00-\u9FFF'  # CJK Unified Ideographs
     '\u3400-\u4DBF'  # CJK Unified Ideographs Extension A
     '\uF900-\uFAFF'  # CJK Compatibility Ideographs
-    '\u9FA6-\u9FCB'  # Extension to the URO
 )
 if sys.maxunicode > 0xFFFF:
     characters += (
