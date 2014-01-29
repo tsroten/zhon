@@ -7,7 +7,7 @@ from string import whitespace
 
 #: A string containing every Pinyin vowel (lowercase and uppercase).
 vowels = (
-    'aɑeiouüvāɑ̄ēīōūǖáɑ́éíóúǘǎɑ̌ěǐǒǔǚàɑ̀èìòùǜ'
+    'aeiouüvāēīōūǖáéíóúǘǎěǐǒǔǚàèìòùǜ'
     'AEIOUÜVĀĒĪŌŪǕÁÉÍÓÚǗǍĚǏǑǓǙÀÈÌÒÙǛ'
 )
 
