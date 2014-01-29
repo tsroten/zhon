@@ -144,8 +144,10 @@ def _build_sentence(word):
 
     """
     return (
-        """(?:%(word)s|[%(non_stops)s\s])+[%(stops)s]['"\]\}\)]*"""
-    ) % {'word': word, 'non_stops': non_stops, 'stops': stops}
+        """(?:%(word)s|[%(non_stops)s]|(?<![%(stops)s ]) )+"""
+        """[%(stops)s]['"\]\}\)]*"""
+    ) % {'word': word, 'non_stops': non_stops.replace('-', '\-'),
+         'stops': stops}
 
 
 #: A regular expression pattern for a valid accented Pinyin syllable.
