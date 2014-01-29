@@ -12,7 +12,7 @@ _o = 'o\u014D\u00F3\u01D2\u00F2'
 _u = 'u\u016B\u00FA\u01D4\u00F9'
 _v = 'v\u00FC\u01D6\u01D8\u01DA\u01DC'
 
-_lowercase_vowels = _a + _e + _i + _o + _u + _v[1:]
+_lowercase_vowels = _a + _e + _i + _o + _u + _v
 _uppercase_vowels = _lowercase_vowels.upper()
 _lowercase_consonants = 'bpmfdtnlgkhjqxzcsrwy'
 _uppercase_consonants = _lowercase_consonants.upper()
