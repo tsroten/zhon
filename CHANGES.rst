@@ -41,3 +41,21 @@ v.1.1.0 (2014-01-28)
 * Clarifies information regarding Traditional and Simplified character
   constants in README.rst.
 * Adds constant short names to README.rst.
+
+v.1.1.1 (2014-01-29)
+--------------------
+
+* Adds documentation.
+* Adds ``zhon.cedict.all`` constant.
+* Removes duplicate code ranges from ``zhon.hanzi.characters``.
+* Makes ``zhon.hanzi.non_stops`` a string containing all non-stops instead of
+  a string containing code ranges.
+* Removes duplicate letters in ``zhon.pinyin.consonants``.
+* Refactors Pinyin vowels/consonant code.
+* Removes the Latin alpha from ``zhon.pinyin.vowels``. Fixes #16.
+* Adds ``cjk_ideographs`` alias for ``zhon.hanzi.characters``.
+* Fixes various typos.
+* Removes numbers from Pinyin word constants. Fixes #15.
+* Adds lowercase and uppercase constants to ``zhon.pinyin``.
+* Fixes a bug with ``zhon.pinyin.sentence``.
+* Adds ``sent`` alias for ``zhon.pinyin.sentence``.

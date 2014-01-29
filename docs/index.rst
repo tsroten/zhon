@@ -410,7 +410,3 @@ provide characters that exist in the CC-CEDICT dictionary.
     Some of these characters are also present in
     :py:data:`zhon.cedict.traditional` because many characters were left
     untouched by the simplification process.
-
-
-.. toctree::
-   :maxdepth: 2
