@@ -66,6 +66,7 @@ _sentence_end = '[%(stops)s][」﹂”』’》）］｝〕〗〙〛〉】]*' % 
 #: as a series of characters and non-stop punctuation marks followed by a stop
 #: and zero or more container-closing punctuation marks (e.g. apostrophe or
 # brackets).
-sentence = '[%(characters)s%(radicals)s%(non_stops)s]*%(sentence_end)s' \
-    % {'characters': characters, 'radicals': radicals, 'non_stops': non_stops,
-        'sentence_end': _sentence_end}
+sent = sentence = (
+    '[%(characters)s%(radicals)s%(non_stops)s]*%(sentence_end)s'
+) % {'characters': characters, 'radicals': radicals, 'non_stops': non_stops,
+     'sentence_end': _sentence_end}
