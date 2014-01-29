@@ -14,7 +14,7 @@ _v = 'v\u00FC\u01D6\u01D8\u01DA\u01DC'
 
 _lowercase_vowels = _a + _e + _i + _o + _u + _v[1:]
 _uppercase_vowels = _lowercase_vowels.upper()
-_lowercase_consonants = 'bpmfdtnlgkhjqxzcsrzcswy'
+_lowercase_consonants = 'bpmfdtnlgkhjqxzcsrwy'
 _uppercase_consonants = _lowercase_consonants.upper()
 
 #: A string containing every Pinyin vowel (lowercase and uppercase).
