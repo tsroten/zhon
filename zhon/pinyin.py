@@ -1,18 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Constants for processing Pinyin strings.
-
-Splitting pinyin into syllables is not as simple as looking for the maximum
-length matches using valid syllables. Instead, lookahead assertions must be
-used to validate possible matches. For syllables, the rough approach used is:
-    1. Get the longest valid syllable.
-    2. If it ends in a consonant make sure it's not followed directly by a
-        vowel (a hyphen or apostrophe doesn't count).
-    3. If the above didn't match, repeat for the next longest valid match.
-
-Lookahead assertions are used to ensure that hyphens and apostrophes are only
-considered valid if used correctly. This helps to weed out non-Pinyin strings.
-
-"""
+"""Constants for processing Pinyin strings."""
 
 from __future__ import unicode_literals
 from string import whitespace
@@ -69,6 +56,16 @@ def _build_syl(vowels, tone_numbers=False):
     Syllables can be preceded by a middle dot (tone mark). Syllables that end
     in a consonant are only valid if they aren't followed directly by a vowel
     with no apostrophe in between.
+
+    The rough approach used to validate a Pinyin syllable is:
+        1. Get the longest valid syllable.
+        2. If it ends in a consonant make sure it's not followed directly by a
+            vowel (hyphens and apostrophes don't count).
+        3. If the above didn't match, repeat for the next longest valid match.
+
+    Lookahead assertions are used to ensure that hyphens and apostrophes are
+    only considered valid if used correctly. This helps to weed out non-Pinyin
+    strings.
 
     """
     # This is the end-of-syllable-consonant lookahead assertion.
