@@ -23,3 +23,12 @@ class TestTraditional(unittest.TestCase):
     def test_re_complement_search(self):
         re_complement = re.compile('[^%s]' % cedict.traditional)
         self.assertNotEqual(re_complement.search(self.simplified_text), None)
+
+
+class TestAll(unittest.TestCase):
+
+    all_text = '车車'
+
+    def test_re_complement_search(self):
+        re_complement = re.compile('[^%s]' % cedict.all)
+        self.assertEqual(re_complement.search(self.all_text), None)

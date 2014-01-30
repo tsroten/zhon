@@ -11,3 +11,6 @@ simp = simplified = simplified.CHARACTERS
 
 #: A string containing all Traditional characters according to CC-CEDICT.
 trad = traditional = traditional.CHARACTERS
+
+#: A string containing all Chinese characters found in CC-CEDICT.
+all = all.CHARACTERS
