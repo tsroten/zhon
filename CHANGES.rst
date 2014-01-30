@@ -59,3 +59,8 @@ v.1.1.1 (2014-01-29)
 * Adds lowercase and uppercase constants to ``zhon.pinyin``.
 * Fixes a bug with ``zhon.pinyin.sentence``.
 * Adds ``sent`` alias for ``zhon.pinyin.sentence``.
+
+v.1.1.2 (2014-01-31)
+--------------------
+
+* Fixes bug with ``zhon.cedict.all``.
