@@ -6,6 +6,7 @@ import sys
 
 #: Character code ranges for pertinent CJK ideograph Unicode blocks.
 characters = cjk_ideographs = (
+    '\u3007'         # Ideographic number zero, see issue #17
     '\u4E00-\u9FFF'  # CJK Unified Ideographs
     '\u3400-\u4DBF'  # CJK Unified Ideographs Extension A
     '\uF900-\uFAFF'  # CJK Compatibility Ideographs

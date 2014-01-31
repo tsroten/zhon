@@ -106,7 +106,7 @@ has some useful information about this:
 .. py:data:: zhon.hanzi.characters
     zhon.hanzi.cjk_ideographs
     
-    Character code ranges for pertinent CJK ideograph Unicode blocks. This includes:
+    Character codes and code ranges for pertinent CJK ideograph Unicode characters. This includes:
 
     * `CJK Unified Ideographs <http://en.wikipedia.org/wiki/CJK_Unified_Ideographs_(Unicode_block)>`_
     * `CJK Unified Ideographs Extension A <http://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_A>`_
@@ -115,6 +115,7 @@ has some useful information about this:
     * `CJK Unified Ideographs Extension D <http://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_D>`_
     * `CJK Compatibility Ideographs <http://en.wikipedia.org/wiki/CJK_Compatibility_Ideographs>`_
     * `CJK Compatibility Ideographs Supplement <http://en.wikipedia.org/wiki/CJK_Compatibility_Ideographs_Supplement>`_
+    * Ideographic number zero
 
     Some of the characters in this constant will not be Chinese characters,
     but this is a convienient way to approach the issue. If you'd rather have
