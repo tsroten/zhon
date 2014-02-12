@@ -112,10 +112,12 @@ def _build_syl(vowels, tone_numbers=False):
         '(?:(?:[zcs]h?|[bpmdtnlgkhw])?%(a)si)|'
         '(?:(?:[zcs]h?|[rjqxybpmdtnl])%(i)s)|'
         '(?:(?:[zcs]h?|[rwbpmfdtnlgkhjqxwy])%(u)s)|'
-        '(?:(?:[zcs]h?|[rmdtnlgkhy])?%(e)s)|'
+        '(?:%(e)s(?:r%(consonant_end)s)?)|'
+        '(?:(?:[zcs]h?|[rmdtnlgkhy])%(e)s)|'
         '(?:[bpmfwyl]?%(o)s)|'
-        '(?:(?:[zcs]h|[bpmfdtnlgkhzcswy])?%(a)s)'
-        ')(?:r%(consonant_end)s)?' + ('[0-5]?' if tone_numbers else '')
+        '(?:(?:[zcs]h|[bpmfdtnlgkhzcswy])?%(a)s)|'
+        '(?:r%(consonant_end)s)'
+        ')' + ('[0-5]?' if tone_numbers else '')
     ) % {
         'consonant_end': consonant_end, 'a': _vowels['a'], 'e': _vowels['e'],
         'i': _vowels['i'], 'o': _vowels['o'], 'u': _vowels['u'],
