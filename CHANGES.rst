@@ -64,3 +64,9 @@ v.1.1.2 (2014-01-31)
 --------------------
 
 * Fixes bug with ``zhon.cedict.all``.
+
+v.1.1.3 (2014-02-12)
+--------------------
+
+* Adds Ideographic number zero to ``zhon.hanzi.characters``. Fixes #17.
+* Fixes r-suffix bug. Fixes #18.
