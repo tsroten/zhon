@@ -57,7 +57,7 @@ VALID_SYLS = (  # 411 total syllables, including 'r'
     'ping', 'ming', 'ding', 'ting', 'ning', 'ling', 'jing', 'qing', 'xing',
     'ying', 'jiong', 'qiong', 'xiong', 'yong', 'nü', 'lü', 'ju', 'qu',
     'xu', 'yu', 'nüe', 'lüe', 'jue', 'que', 'xue', 'yue', 'juan', 'quan',
-    'xuan', 'yuan', 'jun', 'qun', 'xun', 'yun', 'er'
+    'xuan', 'yuan', 'jun', 'qun', 'xun', 'yun', 'er', 'r'
 )
 
 SYL = re.compile(pinyin.syllable)
@@ -101,6 +101,8 @@ def num_syl_to_acc(syllable):
         3. Otherwise, put the tone on the last vowel.
 
     """
+    if syllable.startswith('r') and len(syllable) <= 2:
+        return 'r'  # Special case for 'r' syllable.
     if re.search('[%s]' % VOWELS, syllable) is None:
         return syllable
     syl, tone = syllable[:-1], syllable[-1]
@@ -119,6 +121,8 @@ def num_syl_to_acc(syllable):
 
 
 class TestPinyinSyllables(unittest.TestCase):
+
+    maxDiff = None
 
     def test_number_syllables(self):
         vs = list(VALID_SYLS)
