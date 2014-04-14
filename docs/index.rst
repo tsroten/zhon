@@ -103,8 +103,8 @@ has some useful information about this:
 
     There is some concern that unifying the Han characters may lead to confusion because they are sometimes used differently by the various East Asian languages. Computationally, Han character unification presents no more difficulty than employing a single Latin character set that is used to write languages as different as English and French. Programmers do not expect the characters "c", "h", "a", and "t" alone to tell us whether chat is a French word for cat or an English word meaning “informal talk.” Likewise, we depend on context to identify the American hood (of a car) with the British bonnet. Few computer users are confused by the fact that ASCII can also be used to represent such words as the Welsh word ynghyd, which are strange looking to English eyes. Although it would be convenient to identify words by language for programs such as spell-checkers, it is neither practical nor productive to encode a separate Latin character set for every language that uses it.
 
-.. py:data:: zhon.hanzi.characters
-    zhon.hanzi.cjk_ideographs
+.. py:data:: characters
+    cjk_ideographs
     
     Character codes and code ranges for pertinent CJK ideograph Unicode characters. This includes:
 
@@ -122,29 +122,29 @@ has some useful information about this:
     an enormous string of Chinese characters from a Chinese dictionary, check
     out :py:data:`zhon.cedict`.
 
-.. py:data:: zhon.hanzi.radicals
+.. py:data:: radicals
 
     Character code ranges for the `Kangxi Radicals <http://en.wikipedia.org/wiki/Kangxi_radical#Unicode>`_
     and `CJK Radicals Supplement <http://en.wikipedia.org/wiki/CJK_Radicals_Supplement>`_
     Unicode blocks.
 
-.. py:data:: zhon.hanzi.punctuation
+.. py:data:: punctuation
 
     This is the concatenation of :py:data:`zhon.hanzi.non_stops` and
     :py:data:`zhon.hanzi.stops`. 
 
-.. py:data:: zhon.hanzi.non_stops
+.. py:data:: non_stops
 
     The string ``'＂＃＄％＆＇（）＊＋，－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､　、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘’‛“”„‟…‧﹏'``.
     This contains Chinese punctuation marks, excluding punctuation marks that
     function as stops.
 
-.. py:data:: zhon.hanzi.stops
+.. py:data:: stops
 
     The string ``'！？｡。'``. These punctuation marks function as stops.
 
-.. py:data:: zhon.hanzi.sent
-    zhon.hanzi.sentence
+.. py:data:: sent
+    sentence
 
     A regular expression pattern for a Chinese sentence. A sentence is defined
     as a series of CJK characters (as defined by
@@ -164,25 +164,25 @@ has some useful information about this:
 
 These constants can be used when working with Pinyin.
 
-.. py:data:: zhon.pinyin.vowels
+.. py:data:: vowels
 
     The string ``'aeiouvüāēīōūǖáéíóúǘǎěǐǒǔǚàèìòùǜAEIOUVÜĀĒĪŌŪǕÁÉÍÓÚǗǍĚǏǑǓǙÀÈÌÒÙǛ'``. This contains every Pinyin vowel (lowercase and uppercase).
 
-.. py:data:: zhon.pinyin.consonants
+.. py:data:: consonants
 
     The string ``'bpmfdtnlgkhjqxzcsrwyBPMFDTNLGKHJQXZCSRWY'``. This
     contains every Pinyin consonant (lowercase and uppercase).
 
-.. py:data:: zhon.pinyin.lowercase
+.. py:data:: lowercase
 
     The string ``'bpmfdtnlgkhjqxzcsrwyaeiouvüāēīōūǖáéíóúǘǎěǐǒǔǚàèìòùǜ'``. This contains every lowercase Pinyin vowel and consonant.
 
-.. py:data:: zhon.pinyin.uppercase
+.. py:data:: uppercase
 
     The string ``'BPMFDTNLGKHJQXZCSRWYAEIOUVÜĀĒĪŌŪǕÁÉÍÓÚǗǍĚǏǑǓǙÀÈÌÒÙǛ'``.
     This contains every uppercase vowel and consonant.
 
-.. py:data:: zhon.pinyin.marks
+.. py:data:: marks
 
     The string ``"·012345:-'"``. This contains all Pinyin marks that have
     special meaning: a middle dot and numbers for indicating tone, a colon for
@@ -191,22 +191,22 @@ These constants can be used when working with Pinyin.
     the previous syllable in its word. All of these marks can be used within a
     valid Pinyin word.
 
-.. py:data:: zhon.pinyin.punctuation
+.. py:data:: punctuation
 
     The concatenation of :py:data:`zhon.pinyin.non_stops` and
     :py:data:`zhon.pinyin.stops`.
 
-.. py:data:: zhon.pinyin.non_stops
+.. py:data:: non_stops
 
     The string ``'"#$%&\'()*+,-/:;<=>@[\]^_`{|}~"'``. This contains every
     ASCII punctuation mark that doesn't function as a stop.
 
-.. py:data:: zhon.pinyin.stops
+.. py:data:: stops
 
     The string ``'.!?'``. This contains every ASCII punctuation mark that
     functions as a stop.
 
-.. py:data:: zhon.pinyin.printable
+.. py:data:: printable
 
     The concatenation of :py:data:`zhon.pinyin.vowels`,
     :py:data:`zhon.pinyin.consonants`, :py:data:`zhon.pinyin.marks`,
@@ -230,8 +230,8 @@ Additionally, lookahead assertions are used to ensure that hyphens and
 apostrophes are only accepted when they are used correctly. This helps to
 weed out non-Pinyin strings.
 
-.. py:data:: zhon.pinyin.syl
-    zhon.pinyin.syllable
+.. py:data:: syl
+    syllable
 
     A regular expression pattern for a valid Pinyin syllable (accented or
     numbered). Compile with :py:data:`re.IGNORECASE` (:py:data:`re.I`) to
@@ -242,9 +242,9 @@ weed out non-Pinyin strings.
         >>> re.findall(zhon.pinyin.syllable, 'Shū zài zhuōzi shàngmian. Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
         ['Shū', 'zài', 'zhuō', 'zi', 'shàng', 'mian', 'Shu1', 'zai4', 'zhuo1', 'zi5', 'shang4', 'mian5']
 
-.. py:data:: zhon.pinyin.a_syl
-    zhon.pinyin.acc_syl
-    zhon.pinyin.accented_syllable
+.. py:data:: a_syl
+    acc_syl
+    accented_syllable
 
     A regular expression for a valid accented Pinyin syllable. Compile with
     :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
@@ -256,9 +256,9 @@ weed out non-Pinyin strings.
         ['Shū', 'zài', 'zhuō', 'zi', 'shàng', 'mian']
 
 
-.. py:data:: zhon.pinyin.n_syl
-    zhon.pinyin.num_syl
-    zhon.pinyin.numbered_syllable
+.. py:data:: n_syl
+    num_syl
+    numbered_syllable
 
     A regular expression for a valid numbered Pinyin syllable. Compile with
     :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
@@ -269,7 +269,7 @@ weed out non-Pinyin strings.
         >>> re.findall(zhon.pinyin.num_syl, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
         ['Shu1', 'zai4', 'zhuo1', 'zi5', 'shang4', 'mian5']
 
-.. py:data:: zhon.pinyin.word
+.. py:data:: word
 
     A regular expression pattern for a valid Pinyin word (accented or
     numbered). Compile with :py:data:`re.IGNORECASE` (:py:data:`re.I`) to
@@ -280,9 +280,9 @@ weed out non-Pinyin strings.
         >>> re.findall(zhon.pinyin.word, 'Shū zài zhuōzi shàngmian. Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
         ['Shū', 'zài', 'zhuōzi', 'shàngmian', 'Shu1', 'zai4', 'zhuo1zi5', 'shang4mian5'
 
-.. py:data:: zhon.pinyin.a_word
-    zhon.pinyin.acc_word
-    zhon.pinyin.accented_word
+.. py:data:: a_word
+    acc_word
+    accented_word
 
     A regular expression for a valid accented Pinyin word. Compile with
     :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
@@ -294,9 +294,9 @@ weed out non-Pinyin strings.
         ['Shū', 'zài', 'zhuōzi', 'shàngmian']
 
 
-.. py:data:: zhon.pinyin.n_word
-    zhon.pinyin.num_word
-    zhon.pinyin.numbered_word
+.. py:data:: n_word
+    num_word
+    numbered_word
 
     A regular expression for a valid numbered Pinyin word. Compile with
     :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
@@ -307,8 +307,8 @@ weed out non-Pinyin strings.
         >>> re.findall(zhon.pinyin.num_word, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
         ['Shu1', 'zai4', 'zhuo1zi5', 'shang4mian5']
 
-.. py:data:: zhon.pinyin.sent
-    zhon.pinyin.sentence
+.. py:data:: sent
+    sentence
 
     A regular expression pattern for a valid Pinyin sentence (accented or
     numbered). Compile with :py:data:`re.IGNORECASE` (:py:data:`re.I`) to
@@ -319,9 +319,9 @@ weed out non-Pinyin strings.
         >>> re.findall(zhon.pinyin.sentence, 'Shū zài zhuōzi shàngmian. Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
         ['Shū zài zhuōzi shàngmian.', 'Shu1 zai4 zhuo1zi5 shang4mian5.']
 
-.. py:data:: zhon.pinyin.a_sent
-    zhon.pinyin.acc_sent
-    zhon.pinyin.accented_sentence
+.. py:data:: a_sent
+    acc_sent
+    accented_sentence
 
     A regular expression for a valid accented Pinyin sentence. Compile with
     :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
@@ -334,9 +334,9 @@ weed out non-Pinyin strings.
         ['Shū zài zhuōzi shàngmian.']
 
 
-.. py:data:: zhon.pinyin.n_sent
-    zhon.pinyin.num_sent
-    zhon.pinyin.numbered_sentence
+.. py:data:: n_sent
+    num_sent
+    numbered_sentence
 
     A regular expression for a valid numbered Pinyin sentence. Compile with
     :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
@@ -355,7 +355,7 @@ weed out non-Pinyin strings.
 
 These constants can be used when working with Zhuyin (Bopomofo).
 
-.. py:data:: zhon.zhuyin.characters
+.. py:data:: characters
 
     The string ``'ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄚㄛㄝㄜㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧ'``.
     This contains all Zhuyin characters as defined by the `Bomopofo Unicode
@@ -365,12 +365,12 @@ These constants can be used when working with Zhuyin (Bopomofo).
     that defines characters used in non-standard dialects or minority
     languages.
 
-.. py:data:: zhon.zhuyin.marks
+.. py:data:: marks
 
     The string ``'ˇˊˋ˙'``. This contains the Zhuyin tone marks.
 
-.. py:data:: zhon.zhuyin.syl
-    zhon.zhuyin.syllable
+.. py:data:: syl
+    syllable
 
     A regular expression pattern for a valid Zhuyin syllable.
 
@@ -389,13 +389,13 @@ These constants are built from the `CC-CEDICT dictionary
 They aren't guaranteed to contain every possible Chinese character. They only
 provide characters that exist in the CC-CEDICT dictionary.
 
-.. py:data:: zhon.cedict.all
+.. py:data:: all
 
     A string containing all Chinese characters found in `CC-CEDICT
     <http://cc-cedict.org/wiki/>`_.
 
-.. py:data:: zhon.cedict.trad
-    zhon.cedict.traditional
+.. py:data:: trad
+    traditional
 
     A string containing characters considered by `CC-CEDICT
     <http://cc-cedict.org/wiki/>`_ to be Traditional Chinese characters.
@@ -403,8 +403,8 @@ provide characters that exist in the CC-CEDICT dictionary.
     :py:data:`zhon.cedict.simplified` because many characters were left
     untouched by the simplification process.
 
-.. py:data:: zhon.cedict.simp
-    zhon.cedict.simplified
+.. py:data:: simp
+    simplified
 
     A string containing characters considered by `CC-CEDICT
     <http://cc-cedict.org/wiki/>`_ to be Simplified Chinese characters.
