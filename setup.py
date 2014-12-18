@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 import sys
 
 if sys.version_info < (3, ):
@@ -13,6 +14,10 @@ try:
 except ImportError:
     from distutils.core import setup
 
+
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist upload')
+    sys.exit()
 
 with enc_open('README.rst', 'r', encoding='utf-8') as f:
     long_description = f.read()
