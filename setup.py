@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from setuptools import setup
 import sys
 
 if sys.version_info < (3, ):
@@ -8,6 +7,11 @@ if sys.version_info < (3, ):
     enc_open = codecs.open
 else:
     enc_open = open
+
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
 
 with enc_open('README.rst', 'r', encoding='utf-8') as f:
