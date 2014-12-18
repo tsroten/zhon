@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Provides a string of characters considered to be traditional by CC-CEDICT."""
+"""Provides a string of characters considered traditional by CC-CEDICT."""
 
 from __future__ import unicode_literals
 
