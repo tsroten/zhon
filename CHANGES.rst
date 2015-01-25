@@ -70,3 +70,14 @@ v.1.1.3 (2014-02-12)
 
 * Adds Ideographic number zero to ``zhon.hanzi.characters``. Fixes #17.
 * Fixes r-suffix bug. Fixes #18.
+
+v.1.1.4 (2015-01-25)
+--------------------
+
+* Removes duplicate module declarations in documentation.
+* Moves tests inside zhon package.
+* Adds travis config file.
+* Adds Python 3.4 tests to travis and tox.
+* Fixes flake8 warnings.
+* Adds distutil fallback import statment to setup.py.
+* Adds missing hanzi punctuation. Fixes #19.
