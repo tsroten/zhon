@@ -39,7 +39,7 @@ non_stops = (
     '\u3000\u3001\u3003'
 
     # CJK angle and corner brackets
-    '\u300B\u300C\u300D\u300E\u300F\u3010\u3011'
+    '\u3008\u3009\u300A\u300B\u300C\u300D\u300E\u300F\u3010\u3011'
 
     # CJK brackets and symbols/punctuation
     '\u3014\u3015\u3016\u3017\u3018\u3019\u301A\u301B\u301C\u301D\u301E\u301F'
@@ -61,6 +61,12 @@ non_stops = (
 
     # Overscores and underscores
     '\uFE4F'
+
+    # Small form variants
+    '\uFE51\uFE54'
+
+    # Latin punctuation
+    '\u00B7'
 )
 
 #: A string of Chinese stops.
