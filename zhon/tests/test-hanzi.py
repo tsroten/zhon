@@ -40,3 +40,11 @@ class TestPunctuation(unittest.TestCase):
         p_re = re.compile('[%s]' % hanzi.punctuation)
         t = '你好你好好好哈哈，米饭很好吃；哈哈！'
         self.assertEqual(len(p_re.split(t)), 4)
+
+    def test_issue_19(self):
+        self.assertTrue('《' in hanzi.punctuation)
+        self.assertTrue('·' in hanzi.punctuation)
+        self.assertTrue('〈' in hanzi.punctuation)
+        self.assertTrue('〉' in hanzi.punctuation)
+        self.assertTrue('﹑' in hanzi.punctuation)
+        self.assertTrue('﹔' in hanzi.punctuation)
