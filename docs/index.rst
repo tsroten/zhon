@@ -260,13 +260,26 @@ weed out non-Pinyin strings.
     num_syl
     numbered_syllable
 
-    A regular expression for a valid numbered Pinyin syllable. Compile with
-    :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
+    A regular expression for a valid numbered Pinyin syllable. The neutral tone number (0 or 5) is optional.
+    Compile with :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
     well.
 
     .. code:: python
 
-        >>> re.findall(zhon.pinyin.num_syl, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
+        >>> re.findall(zhon.pinyin.num_syl, 'Shu1 zai4 zhuo1zi shang4mian.', re.IGNORECASE)
+        ['Shu1', 'zai4', 'zhuo1', 'zi', 'shang4', 'mian']
+
+.. py:data:: xn_syl
+    xnum_syl
+    explicitly_numbered_syllable
+
+    A regular expression for a valid numbered Pinyin syllable. Explicit tone numbering is enforced.
+    Compile with :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
+    well.
+
+    .. code:: python
+
+        >>> re.findall(zhon.pinyin.xnum_syl, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
         ['Shu1', 'zai4', 'zhuo1', 'zi5', 'shang4', 'mian5']
 
 .. py:data:: word
@@ -298,13 +311,26 @@ weed out non-Pinyin strings.
     num_word
     numbered_word
 
-    A regular expression for a valid numbered Pinyin word. Compile with
-    :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
+    A regular expression for a valid numbered Pinyin word. The neutral tone number (0 or 5) is optional.
+    Compile with :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
     well.
 
     .. code:: python
 
-        >>> re.findall(zhon.pinyin.num_word, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
+        >>> re.findall(zhon.pinyin.num_word, 'Shu1 zai4 zhuo1zi shang4mian.', re.IGNORECASE)
+        ['Shu1', 'zai4', 'zhuo1zi', 'shang4mian']
+
+.. py:data:: xn_word
+    xnum_word
+    explicitly_numbered_word
+
+    A regular expression for a valid numbered Pinyin word. Explicit tone numbering is enforced.
+    Compile with :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
+    well.
+
+    .. code:: python
+
+        >>> re.findall(zhon.pinyin.xnum_word, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
         ['Shu1', 'zai4', 'zhuo1zi5', 'shang4mian5']
 
 .. py:data:: sent
@@ -338,14 +364,28 @@ weed out non-Pinyin strings.
     num_sent
     numbered_sentence
 
-    A regular expression for a valid numbered Pinyin sentence. Compile with
-    :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
+    A regular expression for a valid numbered Pinyin sentence. The neutral tone number (0 or 5) is optional.
+    Compile with :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
     well.
 
 
     .. code:: python
 
-        >>> re.findall(zhon.pinyin.num_sent, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
+        >>> re.findall(zhon.pinyin.num_sent, 'Shu1 zai4 zhuo1zi shang4mian.', re.IGNORECASE)
+        ['Shu1 zai4 zhuo1zi shang4mian.']
+
+.. py:data:: xn_sent
+    xnum_sent
+    xnumbered_sentence
+
+    A regular expression for a valid numbered Pinyin sentence. Explicit tone numbering is enforced.
+    Compile with :py:data:`re.IGNORECASE` (:py:data:`re.I`) to accept uppercase letters as
+    well.
+
+
+    .. code:: python
+
+        >>> re.findall(zhon.pinyin.xnum_sent, 'Shu1 zai4 zhuo1zi5 shang4mian5.', re.IGNORECASE)
         ['Shu1 zai4 zhuo1zi5 shang4mian5.']
 
 .. module:: zhon.zhuyin
