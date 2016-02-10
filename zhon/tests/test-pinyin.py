@@ -63,11 +63,14 @@ VALID_SYLS = (  # 411 total syllables, including 'r'
 SYL = re.compile(pinyin.syllable)
 A_SYL = re.compile(pinyin.a_syl)
 N_SYL = re.compile(pinyin.n_syl)
+XN_SYL = re.compile(pinyin.xn_syl)
 WORD = re.compile(pinyin.word)
 N_WORD = re.compile(pinyin.n_word)
+XN_WORD = re.compile(pinyin.xn_word)
 A_WORD = re.compile(pinyin.a_word)
 SENT = re.compile(pinyin.sentence)
 N_SENT = re.compile(pinyin.n_sent)
+XN_SENT = re.compile(pinyin.xn_sent)
 A_SENT = re.compile(pinyin.a_sent)
 
 
@@ -120,6 +123,12 @@ def num_syl_to_acc(syllable):
     return syl.replace(last_vowel, _num_vowel_to_acc(last_vowel, tone))
 
 
+def random_tone(allow_toneless):
+    if allow_toneless and random.randint(1, 10) == 1:
+        return ''
+    return str(random.randint(1, 5))
+
+
 class TestPinyinSyllables(unittest.TestCase):
 
     maxDiff = None
@@ -128,7 +137,7 @@ class TestPinyinSyllables(unittest.TestCase):
         vs = list(VALID_SYLS)
         _vs = []
         for n in range(0, len(vs)):
-            vs[n] = vs[n] + str(random.randint(1, 5))
+            vs[n] += random_tone(allow_toneless=True)
             _vs.append(vs[n])
             if _vs[n][0] in 'aeo':
                 _vs[n] = "'%s" % _vs[n]
@@ -136,12 +145,24 @@ class TestPinyinSyllables(unittest.TestCase):
         self.assertEqual(SYL.findall(s), vs)
         self.assertEqual(N_SYL.findall(s), vs)
 
+    def test_explicit_number_syllables(self):
+        vs = list(VALID_SYLS)
+        _vs = []
+        for n in range(0, len(vs)):
+            _vs.append(vs[n])  # without tone
+            vs[n] += random_tone(allow_toneless=False)
+            _vs.append(vs[n])
+            if _vs[n][0] in 'aeo':
+                _vs[n] = "'%s" % _vs[n]
+        s = ''.join(_vs)
+        self.assertEqual(XN_SYL.findall(s), vs)
+
     def test_accent_syllables(self):
         vs = list(VALID_SYLS)
         _vs = []
         for n in range(0, len(vs)):
             syl = vs[n]
-            vs[n] = num_syl_to_acc(vs[n] + str(random.randint(1, 5)))
+            vs[n] = num_syl_to_acc(vs[n] + random_tone(allow_toneless=False))
             _vs.append(vs[n])
             if syl[0] in 'aeo':
                 _vs[n] = "'%s" % _vs[n]
@@ -150,12 +171,11 @@ class TestPinyinSyllables(unittest.TestCase):
         self.assertEqual(A_SYL.findall(s), vs)
 
 
-def create_word(accented=False):
+def create_word(accented=False, allow_toneless=True):
     if accented:
-        tone = lambda: str(random.randint(1, 5))
-        vs = [num_syl_to_acc(s + tone()) for s in VALID_SYLS]
+        vs = [num_syl_to_acc(s + random_tone(allow_toneless=False)) for s in VALID_SYLS]
     else:
-        vs = [s + str(random.randint(1, 5)) for s in VALID_SYLS]
+        vs = [s + random_tone(allow_toneless) for s in VALID_SYLS]
     word = vs[random.randint(0, len(vs) - 1)]
     for n in range(1, WORD_LENGTH):
         num = random.randint(0, len(vs) - 1)
@@ -174,6 +194,27 @@ class TestPinyinWords(unittest.TestCase):
             self.assertEqual(WORD.match(word).group(0), word)
             self.assertEqual(N_WORD.match(word).group(0), word)
 
+    def test_explicit_number_words_when_numbers_present(self):
+        for n in range(0, NUM_WORDS):
+            word = create_word(allow_toneless=False)
+            self.assertEqual(WORD.match(word).group(0), word)
+            self.assertEqual(XN_WORD.match(word).group(0), word)
+
+    def test_explicit_number_words(self):
+        for n in range(0, NUM_WORDS):
+            word = create_word(allow_toneless=True)
+            explicitly_numbered_count = len(XN_SYL.findall(word))
+            if explicitly_numbered_count == WORD_LENGTH:
+                self.assertEqual(XN_WORD.match(word).group(0), word)
+            elif explicitly_numbered_count > 0:
+                if XN_WORD.match(word) is not None:
+                    self.assertNotEqual(XN_WORD.match(word).group(0), word)
+                self.assertNotEqual(len(XN_WORD.findall(word)), 0)
+                self.assertLessEqual(len(XN_WORD.findall(word)), explicitly_numbered_count)
+            else:
+                self.assertIsNone(XN_WORD.match(word))
+                self.assertEqual(len(XN_WORD.findall(word)), 0)
+
     def test_accent_words(self):
         for n in range(0, NUM_WORDS):
             word = create_word(accented=True)
@@ -181,10 +222,10 @@ class TestPinyinWords(unittest.TestCase):
             self.assertEqual(A_WORD.match(word).group(0), word)
 
 
-def create_sentence(accented=False):
+def create_sentence(accented=False, can_be_toneless=True):
     _sent = []
     for n in range(0, SENT_LENGTH):
-        _sent.append(create_word(accented=accented))
+        _sent.append(create_word(accented=accented, allow_toneless=can_be_toneless))
     sentence = [_sent.pop(0)]
     sentence.extend([random.choice([' ', ', ', '; ']) + w for w in _sent])
     return ''.join(sentence) + '.'
@@ -197,6 +238,23 @@ class TestPinyinSentences(unittest.TestCase):
             sentence = create_sentence()
             self.assertEqual(SENT.match(sentence).group(0), sentence)
             self.assertEqual(N_SENT.match(sentence).group(0), sentence)
+
+    def test_explicit_number_sentences_when_numbers_present(self):
+        for n in range(0, NUM_SENT):
+            sentence = create_sentence(can_be_toneless=False)
+            self.assertEqual(SENT.match(sentence).group(0), sentence)
+            self.assertEqual(XN_SENT.match(sentence).group(0), sentence)
+
+    def test_explicit_number_sentences(self):
+        for n in range(0, NUM_SENT):
+            sentence = create_sentence()
+            self.assertEqual(SENT.match(sentence).group(0), sentence)
+            explicitly_numbered_count = len(XN_SYL.findall(sentence))
+            xn_sent_match = XN_SENT.match(sentence)
+            if explicitly_numbered_count == SENT_LENGTH * WORD_LENGTH:
+                self.assertEqual(xn_sent_match.group(0), sentence)
+            elif xn_sent_match is not None:
+                self.assertNotEqual(xn_sent_match.group(0), sentence)
 
     def test_accent_sentences(self):
         for n in range(0, NUM_SENT):
