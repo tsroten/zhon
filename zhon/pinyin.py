@@ -52,8 +52,8 @@ printable = vowels + consonants + marks[:-3] + whitespace + punctuation
 _a_vowels = {'a': _a, 'e': _e, 'i': _i, 'o': _o, 'u': _u, 'v': _v}
 _n_vowels = {'a': 'a', 'e': 'e', 'i': 'i', 'o': 'o', 'u': 'u', 'v': 'v\u00FC'}
 
-tone_numbers_required = '[0-5]'
-tone_numbers_included = tone_numbers_required + '?'
+_tone_numbers_required = '[0-5]'
+_tone_numbers_included = _tone_numbers_required + '?'
 
 
 def _build_syl(vowels, tone_numbers=''):
@@ -162,13 +162,13 @@ def _build_sentence(word):
 a_syl = acc_syl = accented_syllable = _build_syl(_a_vowels)
 
 #: A regular expression pattern for a valid numbered Pinyin syllable (neutral tone mark is optional: it can be implied).
-n_syl = num_syl = numbered_syllable = _build_syl(_n_vowels, tone_numbers_included)
+n_syl = num_syl = numbered_syllable = _build_syl(_n_vowels, _tone_numbers_included)
 
 #: A regular expression pattern for a valid numbered Pinyin syllable (explicit numbering required).
-xn_syl = xnum_syl = explicitly_numbered_syllable = _build_syl(_n_vowels, tone_numbers_required)
+xn_syl = xnum_syl = explicitly_numbered_syllable = _build_syl(_n_vowels, _tone_numbers_required)
 
 #: A regular expression pattern for a valid Pinyin syllable.
-syl = syllable = _build_syl(_a_vowels, tone_numbers_included)
+syl = syllable = _build_syl(_a_vowels, _tone_numbers_included)
 
 
 #: A regular expression pattern for a valid accented Pinyin word.
