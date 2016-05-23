@@ -7,7 +7,7 @@ from __future__ import unicode_literals
 #: A string containing all Zhuyin characters.
 characters = (
     'ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙ'
-    'ㄚㄛㄝㄜㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧ'
+    'ㄚㄛㄝㄜㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧㄨㄩㄭ'
 )
 
 #: A string containing all Zhuyin tone marks.
