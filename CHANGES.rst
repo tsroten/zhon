@@ -81,3 +81,8 @@ v.1.1.4 (2015-01-25)
 * Fixes flake8 warnings.
 * Adds distutil fallback import statment to setup.py.
 * Adds missing hanzi punctuation. Fixes #19.
+
+v.1.1.5 (2016-05-23)
+--------------------
+
+* Add missing Zhuyin characters. Fixes #23.
