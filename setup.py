@@ -24,7 +24,7 @@ with enc_open('README.rst', 'r', encoding='utf-8') as f:
 
 setup(
     name='zhon',
-    version='1.1.4',
+    version='1.1.5',
     author='Thomas Roten',
     author_email='thomas@roten.us',
     url='https://github.com/tsroten/zhon',
