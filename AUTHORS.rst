@@ -10,5 +10,7 @@ Author and Maintainer
 Contributors
 ------------
 
-None yet. Why not be the first?
+* Tait Hoyem <https://github.com/TTWNO> — Jyutping support
+
+Why not be the second?
 
