@@ -41,6 +41,17 @@ Zhon's constants can be used in Chinese text processing, for example:
     >>> re.findall(zhon.pinyin.sentence, 'Yuànzi lǐ tíngzhe yí liàng chē.', re.I)
     ['Yuànzi lǐ tíngzhe yí liàng chē.']
 
+* Validate Jyutping:
+
+  .. code:: python
+    >>> from zhon import jyutping
+    >>> is_valid_jyutping_long('nei5 hou2')
+    True
+
+  .. code:: python
+    >>> is_valid_jyutping('keoi3')
+    True
+
 Features
 --------
 
