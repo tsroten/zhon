@@ -52,6 +52,7 @@ Features
     - Pinyin syllable, word, and sentence regular expression patterns
     - Zhuyin characters and marks
     - Zhuyin syllable regular expression pattern
+    - Jyutping array of all possible combinations
     - CC-CEDICT characters
 + Runs on Python 2.7 and 3
 
