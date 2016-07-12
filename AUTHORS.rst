@@ -13,4 +13,3 @@ Contributors
 * Tait Hoyem <https://github.com/TTWNO> — Jyutping support
 
 Why not be the second?
-
