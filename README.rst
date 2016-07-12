@@ -48,7 +48,6 @@ Zhon's constants can be used in Chinese text processing, for example:
     >>> is_valid_jyutping_long('nei5 hou2')
     True
 
-  .. code:: python
     >>> is_valid_jyutping('keoi3')
     True
 
