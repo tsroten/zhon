@@ -44,6 +44,7 @@ Zhon's constants can be used in Chinese text processing, for example:
 * Validate Jyutping:
 
   .. code:: python
+
     >>> from zhon import jyutping
     >>> is_valid_jyutping_long('nei5 hou2')
     True
@@ -63,6 +64,7 @@ Features
     - Zhuyin characters and marks
     - Zhuyin syllable regular expression pattern
     - Jyutping array of all possible combinations
+    - Jyutping verifying helper functions
     - CC-CEDICT characters
 + Runs on Python 2.7 and 3
 
