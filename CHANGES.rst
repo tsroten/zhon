@@ -86,3 +86,8 @@ v.1.1.5 (2016-05-23)
 --------------------
 
 * Add missing Zhuyin characters. Fixes #23.
+
+v 2.0.0 (2016-06-14)
+--------------------
+
+* Added variables for Jyutping
