@@ -25,7 +25,7 @@ Zhon's constants can be used in Chinese text processing, for example:
 
   .. code:: python
 
-    >>> re.findall('[%s]' % zhon.hanzi.characters, 'I broke a plate: 我打破了一个盘子.')
+    >>> re.findall('[{}]'.format(zhon.hanzi.characters), 'I broke a plate: 我打破了一个盘子.')
     ['我', '打', '破', '了', '一', '个', '盘', '子']
 
 * Validate Pinyin syllables, words, or sentences:

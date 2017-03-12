@@ -69,7 +69,7 @@ regular expressions:
 
     >>> # This regular expression finds all characters that aren't considered
     ... # traditional according to CC-CEDICT
-    ... re.findall('[^%s]' % zhon.cedict.traditional, '我买了一辆车')
+    ... re.findall('[^{}]'.format(zhon.cedict.traditional), '我买了一辆车')
     ['买', '辆', '车']
 
 For constants that contain character code ranges, you'll want to build a
@@ -77,7 +77,7 @@ regular expression:
 
 .. code:: python
 
-    >>> re.findall('[%s]' % zhon.hanzi.punctuation, '我买了一辆车。')
+    >>> re.findall('[{}]'.format(zhon.hanzi.punctuation), '我买了一辆车。')
     ['。']
 
 For constants that are regular expression patterns, you can use them directly
@@ -105,7 +105,7 @@ has some useful information about this:
 
 .. py:data:: characters
     cjk_ideographs
-    
+
     Character codes and code ranges for pertinent CJK ideograph Unicode characters. This includes:
 
     * `CJK Unified Ideographs <http://en.wikipedia.org/wiki/CJK_Unified_Ideographs_(Unicode_block)>`_
@@ -131,7 +131,7 @@ has some useful information about this:
 .. py:data:: punctuation
 
     This is the concatenation of :py:data:`zhon.hanzi.non_stops` and
-    :py:data:`zhon.hanzi.stops`. 
+    :py:data:`zhon.hanzi.stops`.
 
 .. py:data:: non_stops
 
