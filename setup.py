@@ -50,5 +50,5 @@ setup(
         'Topic :: Text Processing :: Linguistic',
     ],
     platforms='Any',
-    test_suite='zhon.tests',
+    test_suite='tests',
 )

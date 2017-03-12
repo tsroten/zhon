@@ -18,7 +18,7 @@ clean:
 	$(MAKE) -C docs clean
 
 lint:
-	flake8 $(PROJECT) setup.py
+	flake8 $(PROJECT) tests setup.py
 
 test:
 	python setup.py test
