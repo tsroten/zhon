@@ -46,5 +46,5 @@ syl = syllable = (
     '[ㄉㄊㄋㄌㄍㄎㄏㄓㄔㄖㄗㄘㄙ]?ㄨㄥ|'
     '[ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄓㄔㄕㄖㄗㄘㄙ]?ㄨ|'
     '[ㄓㄔㄕㄖㄗㄘㄙㄝㄦㄧ]'
-    ')[%(marks)s]?'
-) % {'marks': marks}
+    ')[{marks}]?'
+).format(marks=marks)

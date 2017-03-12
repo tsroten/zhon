@@ -88,8 +88,8 @@ def _num_vowel_to_acc(vowel, tone):
     try:
         return VOWEL_MAP[vowel + str(tone)]
     except IndexError:
-        raise ValueError("Vowel must be one of '%s' and tone must be an int"
-                         "1-5." % VOWELS)
+        raise ValueError("Vowel must be one of '{}' and tone must be an int"
+                         "1-5.".format(VOWELS))
 
 
 def num_syl_to_acc(syllable):
@@ -103,7 +103,7 @@ def num_syl_to_acc(syllable):
     """
     if syllable.startswith('r') and len(syllable) <= 2:
         return 'r'  # Special case for 'r' syllable.
-    if re.search('[%s]' % VOWELS, syllable) is None:
+    if re.search('[{}]'.format(VOWELS), syllable) is None:
         return syllable
     syl, tone = syllable[:-1], syllable[-1]
     if tone not in '12345':
@@ -131,7 +131,7 @@ class TestPinyinSyllables(unittest.TestCase):
             vs[n] = vs[n] + str(random.randint(1, 5))
             _vs.append(vs[n])
             if _vs[n][0] in 'aeo':
-                _vs[n] = "'%s" % _vs[n]
+                _vs[n] = "'{}".format(_vs[n])
         s = ''.join(_vs)
         self.assertEqual(SYL.findall(s), vs)
         self.assertEqual(N_SYL.findall(s), vs)
@@ -144,7 +144,7 @@ class TestPinyinSyllables(unittest.TestCase):
             vs[n] = num_syl_to_acc(vs[n] + str(random.randint(1, 5)))
             _vs.append(vs[n])
             if syl[0] in 'aeo':
-                _vs[n] = "'%s" % _vs[n]
+                _vs[n] = "'{}".format(_vs[n])
         s = ''.join(_vs)
         self.assertEqual(SYL.findall(s), vs)
         self.assertEqual(A_SYL.findall(s), vs)

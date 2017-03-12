@@ -72,13 +72,13 @@ def _build_syl(vowels, tone_numbers=False):
 
     """
     # This is the end-of-syllable-consonant lookahead assertion.
-    consonant_end = '(?![%(a)s%(e)s%(i)s%(o)s%(u)s%(v)s]|u:)' % {
-        'a': _a, 'e': _e, 'i': _i, 'o': _o, 'u': _u, 'v': _v
-    }
+    consonant_end = '(?![{a}{e}{i}{o}{u}{v}]|u:)'.format(
+        a=_a, e=_e, i=_i, o=_o, u=_u, v=_v
+    )
     _vowels = vowels.copy()
     for v, s in _vowels.items():
         if len(s) > 1:
-            _vowels[v] = '[%s]' % s
+            _vowels[v] = '[{}]'.format(s)
     return (
         '(?:\u00B7|\u2027)?'
         '(?:'
@@ -135,9 +135,8 @@ def _build_word(syl, vowels):
     'o'.
 
     """
-    return (
-        "(?:%(syl)s(?:-(?=%(syl)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(syl)s))?)+"
-    ) % {'syl': syl, 'a': vowels['a'], 'e': vowels['e'], 'o': vowels['o']}
+    return "(?:{syl}(?:-(?={syl})|'(?=[{a}{e}{o}])(?={syl}))?)+".format(
+        syl=syl, a=vowels['a'], e=vowels['e'], o=vowels['o'])
 
 
 def _build_sentence(word):
@@ -149,10 +148,10 @@ def _build_sentence(word):
 
     """
     return (
-        """(?:%(word)s|[%(non_stops)s]|(?<![%(stops)s ]) )+"""
-        """[%(stops)s]['"\]\}\)]*"""
-    ) % {'word': word, 'non_stops': non_stops.replace('-', '\-'),
-         'stops': stops}
+        "(?:{word}|[{non_stops}]|(?<![{stops} ]) )+"
+        "[{stops}]['\"\]\}}\)]*"
+    ).format(word=word, non_stops=non_stops.replace('-', '\-'),
+             stops=stops)
 
 
 #: A regular expression pattern for a valid accented Pinyin syllable.
