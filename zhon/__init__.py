@@ -1,3 +1,9 @@
 """Provides constants used in Chinese text processing."""
 
-__version__ = '1.1.5'
+from . import hanzi
+from . import pinyin
+from . import zhuyin
+from . import cedict
+
+
+__version__ = '1.1.6'
