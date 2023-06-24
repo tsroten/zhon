@@ -1,0 +1,3 @@
+[flake8]
+ignore = E731, P101
+exclude = src/zhon/cedict/*

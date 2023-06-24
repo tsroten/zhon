@@ -98,7 +98,7 @@ These constants can be used when working directly with Chinese characters.
 These constants can be used in a variety of ways, but they can't directly
 distinguish between Chinese, Japanese, and Korean characters/words.
 Chapter 12 of The Unicode Standard
-(`PDF <http://www.unicode.org/versions/Unicode6.2.0/ch12.pdf>`_)
+(`PDF <https://www.unicode.org/versions/Unicode6.2.0/ch12.pdf>`_)
 has some useful information about this:
 
     There is some concern that unifying the Han characters may lead to confusion because they are sometimes used differently by the various East Asian languages. Computationally, Han character unification presents no more difficulty than employing a single Latin character set that is used to write languages as different as English and French. Programmers do not expect the characters "c", "h", "a", and "t" alone to tell us whether chat is a French word for cat or an English word meaning “informal talk.” Likewise, we depend on context to identify the American hood (of a car) with the British bonnet. Few computer users are confused by the fact that ASCII can also be used to represent such words as the Welsh word ynghyd, which are strange looking to English eyes. Although it would be convenient to identify words by language for programs such as spell-checkers, it is neither practical nor productive to encode a separate Latin character set for every language that uses it.
@@ -108,13 +108,13 @@ has some useful information about this:
 
     Character codes and code ranges for pertinent CJK ideograph Unicode characters. This includes:
 
-    * `CJK Unified Ideographs <http://en.wikipedia.org/wiki/CJK_Unified_Ideographs_(Unicode_block)>`_
-    * `CJK Unified Ideographs Extension A <http://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_A>`_
-    * `CJK Unified Ideographs Extension B <http://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_B>`_
-    * `CJK Unified Ideographs Extension C <http://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_C>`_
-    * `CJK Unified Ideographs Extension D <http://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_D>`_
-    * `CJK Compatibility Ideographs <http://en.wikipedia.org/wiki/CJK_Compatibility_Ideographs>`_
-    * `CJK Compatibility Ideographs Supplement <http://en.wikipedia.org/wiki/CJK_Compatibility_Ideographs_Supplement>`_
+    * `CJK Unified Ideographs <https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_(Unicode_block)>`_
+    * `CJK Unified Ideographs Extension A <https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_A>`_
+    * `CJK Unified Ideographs Extension B <https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_B>`_
+    * `CJK Unified Ideographs Extension C <https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_C>`_
+    * `CJK Unified Ideographs Extension D <https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_D>`_
+    * `CJK Compatibility Ideographs <https://en.wikipedia.org/wiki/CJK_Compatibility_Ideographs>`_
+    * `CJK Compatibility Ideographs Supplement <https://en.wikipedia.org/wiki/CJK_Compatibility_Ideographs_Supplement>`_
     * Ideographic number zero
 
     Some of the characters in this constant will not be Chinese characters,
@@ -124,8 +124,8 @@ has some useful information about this:
 
 .. py:data:: radicals
 
-    Character code ranges for the `Kangxi Radicals <http://en.wikipedia.org/wiki/Kangxi_radical#Unicode>`_
-    and `CJK Radicals Supplement <http://en.wikipedia.org/wiki/CJK_Radicals_Supplement>`_
+    Character code ranges for the `Kangxi Radicals <https://en.wikipedia.org/wiki/Kangxi_radical#In_Unicode>`_
+    and `CJK Radicals Supplement <https://en.wikipedia.org/wiki/CJK_Radicals_Supplement>`_
     Unicode blocks.
 
 .. py:data:: punctuation
@@ -211,7 +211,7 @@ These constants can be used when working with Pinyin.
     The concatenation of :py:data:`zhon.pinyin.vowels`,
     :py:data:`zhon.pinyin.consonants`, :py:data:`zhon.pinyin.marks`,
     :py:data:`zhon.pinyin.punctuation`, and :py:data:`string.whitespace`. This
-    is essentially a Pinyin whitelist for complete Pinyin sentences -- it's
+    is essentially a Pinyin allowlist for complete Pinyin sentences -- it's
     every possible valid character a Pinyin string can use assuming all
     non-Chinese words that might be included (like proper nouns) use ASCII.
 
@@ -359,9 +359,9 @@ These constants can be used when working with Zhuyin (Bopomofo).
 
     The string ``'ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄚㄛㄝㄜㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧ'``.
     This contains all Zhuyin characters as defined by the `Bomopofo Unicode
-    block <http://en.wikipedia.org/wiki/Bopomofo_(Unicode_block)>`_. It does
+    block <https://en.wikipedia.org/wiki/Bopomofo_(Unicode_block)>`_. It does
     not include the
-    `Bomopofo Extended block <http://en.wikipedia.org/wiki/Bopomofo_Extended_(Unicode_block)>`_
+    `Bomopofo Extended block <https://en.wikipedia.org/wiki/Bopomofo_Extended_(Unicode_block)>`_
     that defines characters used in non-standard dialects or minority
     languages.
 
@@ -385,20 +385,20 @@ These constants can be used when working with Zhuyin (Bopomofo).
 ~~~~~~~~~~~~~~~
 
 These constants are built from the `CC-CEDICT dictionary
-<http://cc-cedict.org/wiki/>`_.
+<https://cc-cedict.org/wiki/>`_.
 They aren't guaranteed to contain every possible Chinese character. They only
 provide characters that exist in the CC-CEDICT dictionary.
 
 .. py:data:: all
 
     A string containing all Chinese characters found in `CC-CEDICT
-    <http://cc-cedict.org/wiki/>`_.
+    <https://cc-cedict.org/wiki/>`_.
 
 .. py:data:: trad
     traditional
 
     A string containing characters considered by `CC-CEDICT
-    <http://cc-cedict.org/wiki/>`_ to be Traditional Chinese characters.
+    <https://cc-cedict.org/wiki/>`_ to be Traditional Chinese characters.
     Some of these characters are also present in
     :py:data:`zhon.cedict.simplified` because many characters were left
     untouched by the simplification process.
@@ -407,7 +407,7 @@ provide characters that exist in the CC-CEDICT dictionary.
     simplified
 
     A string containing characters considered by `CC-CEDICT
-    <http://cc-cedict.org/wiki/>`_ to be Simplified Chinese characters.
+    <https://cc-cedict.org/wiki/>`_ to be Simplified Chinese characters.
     Some of these characters are also present in
     :py:data:`zhon.cedict.traditional` because many characters were left
     untouched by the simplification process.
