@@ -1,9 +1,7 @@
 """Provides constants used in Chinese text processing."""
 
-from . import hanzi
-from . import pinyin
-from . import zhuyin
-from . import cedict
+from zhon import cedict, hanzi, pinyin, zhuyin
 
+__all__ = ["cedict", "hanzi", "pinyin", "zhuyin"]
 
-__version__ = '1.1.6'
+__version__ = "1.1.6"
