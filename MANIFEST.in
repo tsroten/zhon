@@ -1,3 +1,0 @@
-include *.txt *.rst
-recursive-include docs *
-prune docs/_build

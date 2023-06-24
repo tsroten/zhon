@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 """Constants for processing Pinyin strings."""
 
-from __future__ import unicode_literals
 from string import whitespace
+from re import escape
 
 
-_a = 'a\u0101\u00E0\u00E1\u01CE'
-_e = 'e\u0113\u00E9\u011B\u00E8'
-_i = 'i\u012B\u00ED\u01D0\u00EC'
-_o = 'o\u014D\u00F3\u01D2\u00F2'
-_u = 'u\u016B\u00FA\u01D4\u00F9'
-_v = 'v\u00FC\u01D6\u01D8\u01DA\u01DC'
+_a = "a\u0101\u00E0\u00E1\u01CE"
+_e = "e\u0113\u00E9\u011B\u00E8"
+_i = "i\u012B\u00ED\u01D0\u00EC"
+_o = "o\u014D\u00F3\u01D2\u00F2"
+_u = "u\u016B\u00FA\u01D4\u00F9"
+_v = "v\u00FC\u01D6\u01D8\u01DA\u01DC"
 
 _lowercase_vowels = _a + _e + _i + _o + _u + _v
 _uppercase_vowels = _lowercase_vowels.upper()
-_lowercase_consonants = 'bpmfdtnlgkhjqxzcsrwy'
+_lowercase_consonants = "bpmfdtnlgkhjqxzcsrwy"
 _uppercase_consonants = _lowercase_consonants.upper()
 
 #: A string containing every Pinyin vowel (lowercase and uppercase).
@@ -37,10 +37,10 @@ uppercase = _uppercase_consonants + _uppercase_vowels
 marks = "·012345:-'"
 
 #: A string containing valid punctuation marks that are not stops.
-non_stops = """"#$%&'()*+,-/:;<=>@[\]^_`{|}~"""
+non_stops = """"#$%&'()*+,-/\\:;<=>@[]^_`{|}~"""
 
 #: A string containing valid stop punctuation marks.
-stops = '.!?'
+stops = ".!?"
 
 #: A string containing all punctuation marks.
 punctuation = non_stops + stops
@@ -49,8 +49,8 @@ punctuation = non_stops + stops
 #: and whitespace.
 printable = vowels + consonants + marks[:-3] + whitespace + punctuation
 
-_a_vowels = {'a': _a, 'e': _e, 'i': _i, 'o': _o, 'u': _u, 'v': _v}
-_n_vowels = {'a': 'a', 'e': 'e', 'i': 'i', 'o': 'o', 'u': 'u', 'v': 'v\u00FC'}
+_a_vowels = {"a": _a, "e": _e, "i": _i, "o": _o, "u": _u, "v": _v}
+_n_vowels = {"a": "a", "e": "e", "i": "i", "o": "o", "u": "u", "v": "v\u00FC"}
 
 
 def _build_syl(vowels, tone_numbers=False):
@@ -72,56 +72,60 @@ def _build_syl(vowels, tone_numbers=False):
 
     """
     # This is the end-of-syllable-consonant lookahead assertion.
-    consonant_end = '(?![%(a)s%(e)s%(i)s%(o)s%(u)s%(v)s]|u:)' % {
-        'a': _a, 'e': _e, 'i': _i, 'o': _o, 'u': _u, 'v': _v
-    }
+    consonant_end = "(?![{a}{e}{i}{o}{u}{v}]|u:)".format(
+        a=_a, e=_e, i=_i, o=_o, u=_u, v=_v
+    )
     _vowels = vowels.copy()
     for v, s in _vowels.items():
         if len(s) > 1:
-            _vowels[v] = '[%s]' % s
+            _vowels[v] = "[{}]".format(s)
     return (
-        '(?:\u00B7|\u2027)?'
-        '(?:'
-        '(?:(?:[zcs]h|[gkh])u%(a)sng%(consonant_end)s)|'
-        '(?:[jqx]i%(o)sng%(consonant_end)s)|'
-        '(?:[nljqx]i%(a)sng%(consonant_end)s)|'
-        '(?:(?:[zcs]h?|[dtnlgkhrjqxy])u%(a)sn%(consonant_end)s)|'
-        '(?:(?:[zcs]h|[gkh])u%(a)si)|'
-        '(?:(?:[zc]h?|[rdtnlgkhsy])%(o)sng%(consonant_end)s)|'
-        '(?:(?:[zcs]h?|[rbpmfdtnlgkhw])?%(e)sng%(consonant_end)s)|'
-        '(?:(?:[zcs]h?|[rbpmfdtnlgkhwy])?%(a)sng%(consonant_end)s)|'
-        '(?:[bpmdtnljqxy]%(i)sng%(consonant_end)s)|'
-        '(?:[bpmdtnljqx]i%(a)sn%(consonant_end)s)|'
-        '(?:[bpmdtnljqx]i%(a)so)|'
-        '(?:[nl](?:v|u:|\u00FC)%(e)s)|'
-        '(?:[nl](?:%(v)s|u:))|'
-        '(?:[jqxy]u%(e)s)|'
-        '(?:[bpmnljqxy]%(i)sn%(consonant_end)s)|'
-        '(?:[mdnljqx]i%(u)s)|'
-        '(?:[bpmdtnljqx]i%(e)s)|'
-        '(?:[dljqx]i%(a)s)|'
-        '(?:(?:[zcs]h?|[rdtnlgkhxqjy])%(u)sn%(consonant_end)s)|'
-        '(?:(?:[zcs]h?|[rdtgkh])u%(i)s)|'
-        '(?:(?:[zcs]h?|[rdtnlgkh])u%(o)s)|'
-        '(?:(?:[zcs]h|[rgkh])u%(a)s)|'
-        '(?:(?:[zcs]h?|[rbpmfdngkhw])?%(e)sn%(consonant_end)s)|'
-        '(?:(?:[zcs]h?|[rbpmfdtnlgkhwy])?%(a)sn%(consonant_end)s)|'
-        '(?:(?:[zcs]h?|[rpmfdtnlgkhy])?%(o)su)|'
-        '(?:(?:[zcs]h?|[rbpmdtnlgkhy])?%(a)so)|'
-        '(?:(?:[zs]h|[bpmfdtnlgkhwz])?%(e)si)|'
-        '(?:(?:[zcs]h?|[bpmdtnlgkhw])?%(a)si)|'
-        '(?:(?:[zcs]h?|[rjqxybpmdtnl])%(i)s)|'
-        '(?:(?:[zcs]h?|[rwbpmfdtnlgkhjqxwy])%(u)s)|'
-        '(?:%(e)s(?:r%(consonant_end)s)?)|'
-        '(?:(?:[zcs]h?|[rmdtnlgkhy])%(e)s)|'
-        '(?:[bpmfwyl]?%(o)s)|'
-        '(?:(?:[zcs]h|[bpmfdtnlgkhzcswy])?%(a)s)|'
-        '(?:r%(consonant_end)s)'
-        ')' + ('[0-5]?' if tone_numbers else '')
+        "(?:\u00B7|\u2027)?"
+        "(?:"
+        "(?:(?:[zcs]h|[gkh])u%(a)sng%(consonant_end)s)|"
+        "(?:[jqx]i%(o)sng%(consonant_end)s)|"
+        "(?:[nljqx]i%(a)sng%(consonant_end)s)|"
+        "(?:(?:[zcs]h?|[dtnlgkhrjqxy])u%(a)sn%(consonant_end)s)|"
+        "(?:(?:[zcs]h|[gkh])u%(a)si)|"
+        "(?:(?:[zc]h?|[rdtnlgkhsy])%(o)sng%(consonant_end)s)|"
+        "(?:(?:[zcs]h?|[rbpmfdtnlgkhw])?%(e)sng%(consonant_end)s)|"
+        "(?:(?:[zcs]h?|[rbpmfdtnlgkhwy])?%(a)sng%(consonant_end)s)|"
+        "(?:[bpmdtnljqxy]%(i)sng%(consonant_end)s)|"
+        "(?:[bpmdtnljqx]i%(a)sn%(consonant_end)s)|"
+        "(?:[bpmdtnljqx]i%(a)so)|"
+        "(?:[nl](?:v|u:|\u00FC)%(e)s)|"
+        "(?:[nl](?:%(v)s|u:))|"
+        "(?:[jqxy]u%(e)s)|"
+        "(?:[bpmnljqxy]%(i)sn%(consonant_end)s)|"
+        "(?:[mdnljqx]i%(u)s)|"
+        "(?:[bpmdtnljqx]i%(e)s)|"
+        "(?:[dljqx]i%(a)s)|"
+        "(?:(?:[zcs]h?|[rdtnlgkhxqjy])%(u)sn%(consonant_end)s)|"
+        "(?:(?:[zcs]h?|[rdtgkh])u%(i)s)|"
+        "(?:(?:[zcs]h?|[rdtnlgkh])u%(o)s)|"
+        "(?:(?:[zcs]h|[rgkh])u%(a)s)|"
+        "(?:(?:[zcs]h?|[rbpmfdngkhw])?%(e)sn%(consonant_end)s)|"
+        "(?:(?:[zcs]h?|[rbpmfdtnlgkhwy])?%(a)sn%(consonant_end)s)|"
+        "(?:(?:[zcs]h?|[rpmfdtnlgkhy])?%(o)su)|"
+        "(?:(?:[zcs]h?|[rbpmdtnlgkhy])?%(a)so)|"
+        "(?:(?:[zs]h|[bpmfdtnlgkhwz])?%(e)si)|"
+        "(?:(?:[zcs]h?|[bpmdtnlgkhw])?%(a)si)|"
+        "(?:(?:[zcs]h?|[rjqxybpmdtnl])%(i)s)|"
+        "(?:(?:[zcs]h?|[rwbpmfdtnlgkhjqxwy])%(u)s)|"
+        "(?:%(e)s(?:r%(consonant_end)s)?)|"
+        "(?:(?:[zcs]h?|[rmdtnlgkhy])%(e)s)|"
+        "(?:[bpmfwyl]?%(o)s)|"
+        "(?:(?:[zcs]h|[bpmfdtnlgkhzcswy])?%(a)s)|"
+        "(?:r%(consonant_end)s)"
+        ")" + ("[0-5]?" if tone_numbers else "")
     ) % {
-        'consonant_end': consonant_end, 'a': _vowels['a'], 'e': _vowels['e'],
-        'i': _vowels['i'], 'o': _vowels['o'], 'u': _vowels['u'],
-        'v': _vowels['v']
+        "consonant_end": consonant_end,
+        "a": _vowels["a"],
+        "e": _vowels["e"],
+        "i": _vowels["i"],
+        "o": _vowels["o"],
+        "u": _vowels["u"],
+        "v": _vowels["v"],
     }
 
 
@@ -135,9 +139,9 @@ def _build_word(syl, vowels):
     'o'.
 
     """
-    return (
-        "(?:%(syl)s(?:-(?=%(syl)s)|'(?=[%(a)s%(e)s%(o)s])(?=%(syl)s))?)+"
-    ) % {'syl': syl, 'a': vowels['a'], 'e': vowels['e'], 'o': vowels['o']}
+    return "(?:{syl}(?:-(?={syl})|'(?=[{a}{e}{o}])(?={syl}))?)+".format(
+        syl=syl, a=vowels["a"], e=vowels["e"], o=vowels["o"]
+    )
 
 
 def _build_sentence(word):
@@ -148,11 +152,9 @@ def _build_sentence(word):
     container-closing punctuation marks (e.g. apostrophe and brackets).
 
     """
-    return (
-        """(?:%(word)s|[%(non_stops)s]|(?<![%(stops)s ]) )+"""
-        """[%(stops)s]['"\]\}\)]*"""
-    ) % {'word': word, 'non_stops': non_stops.replace('-', '\-'),
-         'stops': stops}
+    return r"(?:{word}|[{non_stops}]|(?<![{stops} ]) )+[{stops}]['\"\]}}\)]*".format(
+        word=word, non_stops=escape(non_stops), stops=escape(stops)
+    )
 
 
 #: A regular expression pattern for a valid accented Pinyin syllable.

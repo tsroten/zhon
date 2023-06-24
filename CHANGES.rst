@@ -86,3 +86,13 @@ v.1.1.5 (2016-05-23)
 --------------------
 
 * Add missing Zhuyin characters. Fixes #23.
+
+v.2.0.0 (2023-06-24)
+--------------------
+
+* Removes Python 2.7 support
+* Bumps minimum support Python to Python 3.7
+* Switches to hatch for project management
+* Fixes an invalid backslash escape sequence (#34)
+* Automatically imports subpackages when importing zhon (#31)
+* Updates documentation about combining diacritic marks (#29)
