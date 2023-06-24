@@ -44,7 +44,7 @@ Zhon's constants can be used in Chinese text processing, for example:
 Features
 --------
 
-+ Includes commonly-used constants:
+* Includes commonly-used constants:
     - CJK characters and radicals
     - Chinese punctuation marks
     - Chinese sentence regular expression pattern
@@ -53,7 +53,6 @@ Features
     - Zhuyin characters and marks
     - Zhuyin syllable regular expression pattern
     - CC-CEDICT characters
-+ Runs on Python 2.7 and 3
 
 Getting Started
 ---------------

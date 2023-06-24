@@ -86,3 +86,8 @@ v.1.1.5 (2016-05-23)
 --------------------
 
 * Add missing Zhuyin characters. Fixes #23.
+
+v.2.0.0 (TBD)
+-------------
+
+* Removes Python 2.7 support

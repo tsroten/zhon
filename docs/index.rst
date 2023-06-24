@@ -24,11 +24,11 @@ processing:
 Installation
 ------------
 
-Zhon supports Python 2.7 and 3. Install using pip:
+Zhon supports Python 3. Install using pip:
 
 .. code:: bash
 
-    $ pip install zhon
+    $ pip3 install zhon
 
 If you want to download the latest source code, check out `Zhon's GitHub
 repository <https://github.com/tsroten/zhon>`_.

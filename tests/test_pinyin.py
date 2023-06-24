@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """Tests for the zhon.pinyin module."""
 
-from __future__ import unicode_literals
 import random
 import re
 import unittest
