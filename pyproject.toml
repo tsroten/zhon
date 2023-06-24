@@ -51,7 +51,7 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://zhon.readthedocs.org"
+Documentation = "https://tsroten.github.io/fcache"
 "Source code" = "https://github.com/tsroten/zhon"
 
 [tool.hatch.version]
@@ -59,7 +59,7 @@ path = "src/zhon/__init__.py"
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/src/zhon",
+    "/src",
 ]
 
 [tool.hatch.envs.default.scripts]

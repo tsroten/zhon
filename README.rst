@@ -58,7 +58,7 @@ Features
 Getting Started
 ---------------
 
-* `Install Zhon <https://tsroten.github.io/fcache/#installation>`_
-* Read `Zhon's introduction <https://tsroten.github.io/fcache/#using-zhon>`_
-* Learn from the `API documentation <https://tsroten.github.io/fcache/#zhon-hanzi>`_
+* `Install Zhon <https://tsroten.github.io/zhon/#installation>`_
+* Read `Zhon's introduction <https://tsroten.github.io/zhon/#using-zhon>`_
+* Learn from the `API documentation <https://tsroten.github.io/zhon/#module-zhon.hanzi>`_
 * `Contribute <https://github.com/tsroten/zhon/blob/develop/CONTRIBUTING.rst>`_ documentation, code, or feedback
