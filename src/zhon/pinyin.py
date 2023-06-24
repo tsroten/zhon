@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """Constants for processing Pinyin strings."""
 
-from __future__ import unicode_literals
 from string import whitespace
 from re import escape
 

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """Constants for working with Chinese characters."""
 
-from __future__ import unicode_literals
 import sys
 
 #: Character code ranges for pertinent CJK ideograph Unicode blocks.

@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 """Constants for working with Zhuyin (Bopomofo)."""
 
-from __future__ import unicode_literals
-
-
 #: A string containing all Zhuyin characters.
 characters = "ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙ" "ㄚㄛㄝㄜㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧㄨㄩㄭ"
 
