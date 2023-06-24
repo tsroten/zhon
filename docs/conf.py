@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 project = 'Zhon'
-copyright = '2016, Thomas Roten'
+copyright = '2023, Thomas Roten'
 author = 'Thomas Roten'
-release = '1.1.5'
+release = '2.0.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
