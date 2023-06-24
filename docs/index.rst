@@ -230,6 +230,11 @@ Additionally, lookahead assertions are used to ensure that hyphens and
 apostrophes are only accepted when they are used correctly. This helps to
 weed out non-Pinyin strings.
 
+.. note::
+    Zhon's pinyin constants do not currently support matching syllables that
+    make use of separate `combining diacritic marks
+    <https://en.wikipedia.org/wiki/Combining_Diacritical_Marks>`_.
+
 .. py:data:: syl
     syllable
 
