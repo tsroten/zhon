@@ -3,6 +3,7 @@
 
 from __future__ import unicode_literals
 from string import whitespace
+from re import escape
 
 
 _a = "a\u0101\u00E0\u00E1\u01CE"
@@ -37,7 +38,7 @@ uppercase = _uppercase_consonants + _uppercase_vowels
 marks = "·012345:-'"
 
 #: A string containing valid punctuation marks that are not stops.
-non_stops = """"#$%&'()*+,-/:;<=>@[\]^_`{|}~"""
+non_stops = """"#$%&'()*+,-/\\:;<=>@[]^_`{|}~"""
 
 #: A string containing valid stop punctuation marks.
 stops = ".!?"
@@ -152,9 +153,9 @@ def _build_sentence(word):
     container-closing punctuation marks (e.g. apostrophe and brackets).
 
     """
-    return (
-        "(?:{word}|[{non_stops}]|(?<![{stops} ]) )+" "[{stops}]['\"\]\}}\)]*"
-    ).format(word=word, non_stops=non_stops.replace("-", "\-"), stops=stops)
+    return r"(?:{word}|[{non_stops}]|(?<![{stops} ]) )+[{stops}]['\"\]}}\)]*".format(
+        word=word, non_stops=escape(non_stops), stops=escape(stops)
+    )
 
 
 #: A regular expression pattern for a valid accented Pinyin syllable.
