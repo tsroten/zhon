@@ -2,16 +2,16 @@
 Zhon
 ====
 
-.. image:: https://badge.fury.io/py/zhon.png
-    :target: http://badge.fury.io/py/zhon
+.. image:: https://badge.fury.io/py/zhon.svg
+    :target: https://pypi.org/project/zhon
 
-.. image:: https://travis-ci.org/tsroten/zhon.png?branch=develop
-        :target: https://travis-ci.org/tsroten/zhon
+.. image:: https://github.com/tsroten/zhon/actions/workflows/ci.yml/badge.svg
+    :target: https://github.com/tsroten/zhon/actions/workflows/ci.yml
 
 Zhon is a Python library that provides constants commonly used in Chinese text
 processing.
 
-* Documentation: http://zhon.rtfd.org
+* Documentation: https://tsroten.github.io/zhon/
 * GitHub: https://github.com/tsroten/zhon
 * Support: https://github.com/tsroten/zhon/issues
 * Free software: `MIT license <http://opensource.org/licenses/MIT>`_
@@ -58,7 +58,7 @@ Features
 Getting Started
 ---------------
 
-* `Install Zhon <http://zhon.readthedocs.org/en/latest/#installation>`_
-* Read `Zhon's introduction <http://zhon.readthedocs.org/en/latest/#using-zhon>`_
-* Learn from the `API documentation <http://zhon.readthedocs.org/en/latest/#zhon-hanzi>`_
+* `Install Zhon <https://tsroten.github.io/fcache/#installation>`_
+* Read `Zhon's introduction <https://tsroten.github.io/fcache/#using-zhon>`_
+* Learn from the `API documentation <https://tsroten.github.io/fcache/#zhon-hanzi>`_
 * `Contribute <https://github.com/tsroten/zhon/blob/develop/CONTRIBUTING.rst>`_ documentation, code, or feedback
