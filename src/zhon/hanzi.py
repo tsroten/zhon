@@ -55,6 +55,7 @@ non_stops = (
 
 #: A string of Chinese stops.
 stops = (
+    "\uFF0E"  # Fullwidth full stop
     "\uFF01"  # Fullwidth exclamation mark
     "\uFF1F"  # Fullwidth question mark
     "\uFF61"  # Halfwidth ideographic full stop
