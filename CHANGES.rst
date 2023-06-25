@@ -96,3 +96,8 @@ v.2.0.0 (2023-06-24)
 * Fixes an invalid backslash escape sequence (#34)
 * Automatically imports subpackages when importing zhon (#31)
 * Updates documentation about combining diacritic marks (#29)
+
+v.2.0.1 (2023-06-25)
+--------------------
+
+* Remove unneeeded dependency.

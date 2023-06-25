@@ -46,9 +46,6 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Text Processing :: Linguistic",
 ]
-dependencies = [
-    "appdirs",
-]
 
 [project.urls]
 Documentation = "https://tsroten.github.io/fcache"
