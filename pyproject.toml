@@ -48,7 +48,7 @@ classifiers = [
 ]
 
 [project.urls]
-Documentation = "https://tsroten.github.io/fcache"
+Documentation = "https://tsroten.github.io/zhon"
 "Source code" = "https://github.com/tsroten/zhon"
 
 [tool.hatch.version]
