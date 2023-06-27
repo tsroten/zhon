@@ -45,6 +45,7 @@ Features
 --------
 
 Zhon includes the following commonly-used constants:
+
 * CJK characters and radicals
 * Chinese punctuation marks
 * Chinese sentence regular expression pattern
