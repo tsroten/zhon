@@ -4,4 +4,4 @@ from zhon import cedict, hanzi, pinyin, zhuyin
 
 __all__ = ["cedict", "hanzi", "pinyin", "zhuyin"]
 
-__version__ = "2.0.1"
+__version__ = "2.0.2"

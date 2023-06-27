@@ -1,6 +1,13 @@
 Changes
 =======
 
+v.2.0.2 (2023-06-27)
+--------------------
+
+* Fix broken documentation link at at pypi
+* Restructure documentation into multiple pages
+* Reverse sort changelog
+
 v.2.0.1 (2023-06-25)
 --------------------
 
