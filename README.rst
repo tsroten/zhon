@@ -44,20 +44,19 @@ Zhon's constants can be used in Chinese text processing, for example:
 Features
 --------
 
-* Includes commonly-used constants:
-    - CJK characters and radicals
-    - Chinese punctuation marks
-    - Chinese sentence regular expression pattern
-    - Pinyin vowels, consonants, lowercase, uppercase, and punctuation
-    - Pinyin syllable, word, and sentence regular expression patterns
-    - Zhuyin characters and marks
-    - Zhuyin syllable regular expression pattern
-    - CC-CEDICT characters
+Zhon includes the following commonly-used constants:
+  * CJK characters and radicals
+  * Chinese punctuation marks
+  * Chinese sentence regular expression pattern
+  * Pinyin vowels, consonants, lowercase, uppercase, and punctuation
+  * Pinyin syllable, word, and sentence regular expression patterns
+  * Zhuyin characters and marks
+  * Zhuyin syllable regular expression pattern
+  * CC-CEDICT characters
 
 Getting Started
 ---------------
 
-* `Install Zhon <https://tsroten.github.io/zhon/#installation>`_
-* Read `Zhon's introduction <https://tsroten.github.io/zhon/#using-zhon>`_
-* Learn from the `API documentation <https://tsroten.github.io/zhon/#module-zhon.hanzi>`_
+* `Install Zhon <https://tsroten.github.io/zhon/installation.html>`_
+* `Learn how to use Zhon <https://tsroten.github.io/zhon/api.html>`_
 * `Contribute <https://github.com/tsroten/zhon/blob/develop/CONTRIBUTING.rst>`_ documentation, code, or feedback
