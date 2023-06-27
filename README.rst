@@ -45,14 +45,14 @@ Features
 --------
 
 Zhon includes the following commonly-used constants:
-  * CJK characters and radicals
-  * Chinese punctuation marks
-  * Chinese sentence regular expression pattern
-  * Pinyin vowels, consonants, lowercase, uppercase, and punctuation
-  * Pinyin syllable, word, and sentence regular expression patterns
-  * Zhuyin characters and marks
-  * Zhuyin syllable regular expression pattern
-  * CC-CEDICT characters
+* CJK characters and radicals
+* Chinese punctuation marks
+* Chinese sentence regular expression pattern
+* Pinyin vowels, consonants, lowercase, uppercase, and punctuation
+* Pinyin syllable, word, and sentence regular expression patterns
+* Zhuyin characters and marks
+* Zhuyin syllable regular expression pattern
+* CC-CEDICT characters
 
 Getting Started
 ---------------
