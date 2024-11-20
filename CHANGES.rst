@@ -1,6 +1,10 @@
 Changes
 =======
 
+v.2.1.1 (2024-11-19)
+--------------------
+* Bump version in docs
+
 v.2.1.0 (2024-11-19)
 --------------------
 * Removes Python 3.8 support
