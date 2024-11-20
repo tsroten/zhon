@@ -2,7 +2,9 @@
 """Constants for working with Zhuyin (Bopomofo)."""
 
 #: A string containing all Zhuyin characters.
-characters = "ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙ" "ㄚㄛㄝㄜㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧㄨㄩㄭ"
+characters = (
+    "ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙ" "ㄚㄛㄝㄜㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧㄨㄩㄭ"
+)
 
 #: A string containing all Zhuyin tone marks.
 marks = (
